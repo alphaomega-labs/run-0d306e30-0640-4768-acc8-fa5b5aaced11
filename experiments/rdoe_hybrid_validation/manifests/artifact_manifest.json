@@ -1,0 +1,52 @@
+{
+  "datasets": [
+    {
+      "path": "experiments/rdoe_hybrid_validation/data/all_experiments_raw.csv",
+      "sha256": "eb52e0e715e48febc04ee171b64997382eab50e188d8f3fc57c3e4a519cedd68"
+    },
+    {
+      "path": "paper/data/all_experiments_raw.csv",
+      "sha256": "eb52e0e715e48febc04ee171b64997382eab50e188d8f3fc57c3e4a519cedd68"
+    }
+  ],
+  "figures": [
+    {
+      "path": "paper/figures/exp_h1_panels.pdf",
+      "sha256": "5639b6d1cf0d9436689ef00ee02e4841fc9972b90b685d7ffb2de5de88cb3c38"
+    },
+    {
+      "path": "paper/figures/exp_h2_panels.pdf",
+      "sha256": "9fac52f5604236bd8e507fb90c38ff8768ac934fb0f912ac3137d4fb61315c79"
+    },
+    {
+      "path": "paper/figures/exp_h3_panels.pdf",
+      "sha256": "410cc6cbe2d2ff3a314de746d0fe8f43c578c266fe0c53784a2ab75216331cbe"
+    },
+    {
+      "path": "paper/figures/exp_h4_panels.pdf",
+      "sha256": "0ce4be4260df496bdebea884443fcd5b941658258c39ab652ef4695bee542207"
+    }
+  ],
+  "sympy_report": {
+    "path": "experiments/rdoe_hybrid_validation/sympy/sympy_validation_report.txt",
+    "sha256": "7323216663a01948ec8d4955457462094a889948b053e14bb6581b781308af78"
+  },
+  "tables": [
+    {
+      "path": "paper/tables/exp-h1-certified_trigger_security_summary.csv",
+      "sha256": "834bf2d0129b97b892adb365497a79e3012df72a393c2a6534e30f495b935f7a"
+    },
+    {
+      "path": "paper/tables/exp-h2-online_uncertainty_calibration_summary.csv",
+      "sha256": "c25a7f3f77fe4b863f4ff2125b734719585d98664c78833d9dd739b8983a1ad5"
+    },
+    {
+      "path": "paper/tables/exp-h3-fairness_policy_surface_summary.csv",
+      "sha256": "6e2cbc361ce084ba33a75fff96945dd3e5dac71f1dff192f82df2c4ddd522f64"
+    },
+    {
+      "path": "paper/tables/exp-h4-cross_solver_shadow_mode_summary.csv",
+      "sha256": "48e2972213162292350f89b6f13fa1e6cc9378ed95cc731eacf12bcc4810c4e9"
+    }
+  ]
+}

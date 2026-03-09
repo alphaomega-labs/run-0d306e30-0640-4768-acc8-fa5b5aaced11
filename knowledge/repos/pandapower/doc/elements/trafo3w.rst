@@ -1,0 +1,212 @@
+﻿===========================
+Three Winding Transformer
+===========================
+
+.. |br| raw:: html
+
+    <br>
+    
+.. seealso::
+
+    :ref:`Unit Systems and Conventions <conventions>` |br|
+    :ref:`Standard Type Libraries <std_types>`
+
+Create Function
+=====================
+
+.. _create_trafo3w:
+
+.. autofunction:: pandapower.create.create_transformer3w
+.. autofunction:: pandapower.create.create_transformers3w
+.. autofunction:: pandapower.create.create_transformer3w_from_parameters
+.. autofunction:: pandapower.create.create_transformers3w_from_parameters
+
+.. note::
+    All short circuit voltages are given relative to the minimum apparent power
+    flow. For example vk_hv_percent is the short circuit voltage from the high to
+    the medium level, it is given relative to the minimum of the rated apparent
+    power in high and medium level: min(sn_hv_mva, sn_mv_mva). This is consistent
+    with most commercial network calculation software (e.g. PowerFactory).
+    Some tools (like PSS Sincal) however define all short circuit voltages relative
+    to the overall rated apparent power of the transformer:
+    max(sn_hv_mva, sn_mv_mva, sn_lv_mva). You might have to convert the
+    values depending on how the short-circuit voltages are defined.
+
+Input Parameters
+=========================
+
+*net.trafo3w*
+
+.. tabularcolumns:: |p{0.15\linewidth}|p{0.1\linewidth}|p{0.25\linewidth}|p{0.4\linewidth}|
+.. csv-table:: 
+    :file: trafo3w_par.csv
+    :delim: ;
+    :widths: 15, 10, 10, 30
+
+\*necessary for executing a power flow calculation.
+
+.. note:: Three Winding Transformer loading can not yet be constrained with the optimal power flow.
+
+.. _trafo3w_model:
+
+Electric Model
+=================
+
+Three Winding Transformers are modelled by three two-winding transformers in :math:`Y`-connection:
+
+.. image:: trafo3w.png
+    :width: 25em
+    :alt: alternate Text
+    :align: center
+
+The parameters of the three transformers are defined as follows:
+
+.. tabularcolumns:: |p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|
+.. csv-table:: 
+    :file: trafo3w_conversion.csv
+    :delim: ;
+    :widths: 10, 15, 15, 15
+
+The iron loss (pfe\_kw) and open loop loss (i0\_percent) of the 3W transformer is by default attributed to T1 ('hv').
+The parameter 'trafo3w\_losses' in the runpp function however also allows to assign the losses to T2 ('mv'), T3('lv') or to the star point ('star').
+   
+To calculate the short-circuit voltages :math:`v_{k, t1..t3}` and :math:`v_{r, t1..t3}`, first all short-circuit voltages are converted from side based
+values to branch based values
+
+.. math::
+    v'_{k, hm} &= vk\_hv\_percent \cdot \frac{sn\_hv\_mva}{min(sn\_hv\_mva, sn\_mv\_mva)} \\
+    v'_{k, ml} &= vk\_mv\_percent \cdot \frac{sn\_hv\_mva}{min(sn\_mv\_mva, sn\_lv\_mva)} \\
+    v'_{k, lh} &= vk\_lv\_percent \cdot \frac{sn\_hv\_mva}{min(sn\_hv\_mva, sn\_lv\_mva)}
+    
+These transformer now represent a :math:`\Delta` connection of the equivalent transformers. A :math:`\Delta-Y` conversion is therefore applied to receive the parameters in :math:`Y`-connection:
+
+.. math::
+    v'_{k, T1} &= \frac{1}{2} (v'_{k, hm} + v'_{k, lh} - v'_{k, ml}) \\
+    v'_{k, T2} &= \frac{1}{2} (v'_{k, ml} + v'_{k, hm} - v'_{k, lh}) \\
+    v'_{k, T3} &= \frac{1}{2} (v'_{k, ml} + v'_{k, lh} - v'_{k, hm})
+    
+Since these voltages are given relative to the high voltage side, they have to be transformed back to the voltage level of each transformer:
+
+.. math::
+    v_{k, T1} &= v'_{k, t1} \\
+    v_{k, T2} &= v'_{k, t2} \cdot \frac{sn\_mv\_mva}{sn\_hv\_mva} \\
+    v_{k, T3} &= v'_{k, t3} \cdot \frac{sn\_lv\_mva}{sn\_hv\_mva}
+
+The real part of the short-circuit voltage is calculated in the same way.
+
+The definition of how impedance's are calculated for the two winding transformer from these parameters can be found :ref:`here<trafo>`.
+
+.. note::
+    All short circuit voltages are given relative to the maximum apparent power
+    flow. For example vk_hv_percent is the short circuit voltage from the high to
+    the medium level, it is given relative to the minimum of the rated apparent
+    power in high and medium level: min(sn_hv_mva, sn_mv_mva). This is consistent
+    with most commercial network calculation software (e.g. PowerFactory).
+    Some tools (like PSS Sincal) however define all short circuit voltages relative
+    to the overall rated apparent power of the transformer:
+    max(sn_hv_mva, sn_mv_mva, sn_lv_mva). You might have to convert the
+    values depending on how the short-circuit voltages are defined.
+
+The tap changer adapts the nominal voltages of the transformer in the equivalent to the 2W-Model:
+
+.. tabularcolumns:: |p{0.2\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|
+.. csv-table:: 
+    :file: trafo3w_tap.csv
+    :delim: ;
+    :widths: 20, 15, 15, 15
+
+with 
+
+.. math::
+    n_{tap} = 1 + (tap\_pos - tap\_neutral) \cdot \frac{tap\_st\_percent}{100}
+
+The variable tap\_side controls if the tap changer is located at T1 ('hv'), T2 ('mv') or T3 ('lv'). The tap\_at\_star\_point variable controls if the tap changer
+is located at the star point of the three winding transformer or at the terminal side (hv/mv/lv bus).
+    
+.. seealso::
+    `MVA METHOD FOR 3-WINDING TRANSFORMER <https:/pangonilo.com/index.php?sdmon=files/MVA_Method_3-Winding_Transformer.pdf>`_
+
+Trafo characteristic table
+----------------------------
+
+A transformer characteristic table (trafo_characteristic_table) can be used to adjust the 3-winding transformer parameters
+(voltage ratio, angle, impedance) according to the selected tap position. This lookup table is created automatically
+from version 3.0 onwards through the CIM CGMES to pandapower converter (if this information is available in the EQ
+profile), or the user may define this table manually. The id_characteristic_table variable in net.trafo3w references
+the id_characteristic column in net.trafo_characteristic_table per 3-winding transformer.
+
+If the tap_dependency_table variable in net.trafo3w is set to True, this indicates that there is a corresponding
+characteristic available in net.trafo_characteristic_table, which overwrites the default 3-winding transformer parameters
+tap_step_percent, tap_step_degree, vkr_hv_percent, vkr_mv_percent, vkr_lv_percent, vk_hv_percent, vk_mv_percent and
+vk_lv_percent.
+
+The below table provides an example trafo_characteristic_table, populated for two 3-winding transformers.
+
+.. tabularcolumns:: |p{0.10\linewidth}|p{0.55\linewidth}|p{0.15\linewidth}|p{0.55\linewidth}|p{0.55\linewidth}|p{0.55\linewidth}|p{0.55\linewidth}|p{0.55\linewidth}|p{0.55\linewidth}|p{0.55\linewidth}|p{0.55\linewidth}|p{0.55\linewidth}|p{0.55\linewidth}
+.. csv-table::
+    :file: trafo3w_char_table.csv
+    :delim: ,
+    :widths: 10, 55, 15, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55
+
+.. note::
+    - net.trafo_characteristic_table is applicable to both 2-winding and 3-winding transformers; the corresponding impedance parameters are populated accordingly.
+    - tap_dependency_table has to be set to True, and id_characteristic_table and tap_changer_type variables need to be populated in order to consider the corresponding trafo_characteristic_table values.
+
+The function pandapower.control.trafo_characteristic_table_diagnostic can be used for sanity checks.
+The function pandapower.control.create_trafo_characteristic_object can be used to automatically create
+SplineCharacteristic objects and populate the net.trafo_characteristic_spline table according to the
+net.trafo_characteristic_table table. An additional column id_characteristic_spline is also created in net.trafo3w
+to set up the reference to the spline characteristics.
+
+The below table provides an example trafo_characteristic_spline table, populated for two 3-winding transformers.
+
+.. tabularcolumns:: |p{0.10\linewidth}|p{0.55\linewidth}|p{0.55\linewidth}|p{0.55\linewidth}|p{0.55\linewidth}|p{0.55\linewidth}|p{0.55\linewidth}|p{0.55\linewidth}|p{0.55\linewidth}|p{0.55\linewidth}|p{0.55\linewidth}|p{0.55\linewidth}
+.. csv-table::
+    :file: trafo3w_char_spline.csv
+    :delim: ,
+    :widths: 10, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55
+
+Result Parameters
+==========================
+**net.res_trafo3w**
+
+.. tabularcolumns:: |p{0.15\linewidth}|p{0.1\linewidth}|p{0.60\linewidth}|
+.. csv-table:: 
+    :file: trafo3w_res.csv
+    :delim: ;
+    :widths: 15, 10, 60
+
+.. math::
+    p\_hv\_mw &= Re(\underline{v}_{hv} \cdot \underline{i}_{hv}) \\    
+    q\_hv\_mvar &= Im(\underline{v}_{hv} \cdot \underline{i}_{hv}) \\
+    p\_mv\_mw &= Re(\underline{v}_{mv} \cdot \underline{i}_{mv}) \\    
+    q\_mv\_mvar &= Im(\underline{v}_{mv} \cdot \underline{i}_{mv}) \\
+    p\_lv\_mw &= Re(\underline{v}_{lv} \cdot \underline{i}_{lv}) \\
+    q\_lv\_mvar &= Im(\underline{v}_{lv} \cdot \underline{i}_{lv}) \\
+	pl\_mw &= p\_hv\_mw + p\_lv\_mw \\
+	ql\_mvar &= q\_hv\_mvar + q\_lv\_mvar \\
+    i\_hv\_ka &= i_{hv} \\
+    i\_mv\_ka &= i_{mv} \\
+    i\_lv\_ka &= i_{lv}
+    
+The definition of the transformer loading depends on the trafo_loading parameter of the power flow.
+
+For trafo_loading='current', the loading is calculated as:
+
+.. math::
+    loading\_percent = max(\frac{i_{hv} \cdot vn\_hv\_kv}{sn\_hv\_mva}, \frac{i_{mv} \cdot vn\_mv\_kv}{sn\_mv\_mva}, \frac{i_{lv} \cdot vn\_lv\_kv}{sn\_lv\_mva})  \cdot 100
+
+For trafo_loading='power', the loading is defined as:
+    
+.. math::
+    loading\_percent = max( \frac{i_{hv} \cdot v_{hv}}{sn\_hv\_mva}, \frac{i_{mv} \cdot v_{mv}}{sn\_mv\_mva}, \frac{i_{lv} \cdot v_{lv}}{sn\_lv\_mva}) \cdot 100
+
+**net.res_trafo3w_sc**
+
+The short-circuit (SC) results are put into *net.res_trafo3w_sc* with following definitions:
+
+.. tabularcolumns:: |p{0.15\linewidth}|p{0.1\linewidth}|p{0.60\linewidth}|
+.. csv-table:: 
+    :file: trafo3w_res_sc.csv
+    :delim: ;
+    :widths: 15, 10, 60

@@ -1,0 +1,1382 @@
+[
+  {
+    "assumptions": [
+      "Three-phase unbalanced network model with AC non-convexity retained.",
+      "Uncertainty set over network parameters and DER utilization can be represented for robust feasibility checks."
+    ],
+    "authors": [
+      "Marius-Constantin Dinu",
+      "Yunhe Hou",
+      "Lina Bertling Tjernberg"
+    ],
+    "citation": "KA01",
+    "claims": [
+      "Non-convex/sensitivity-filtered method improves security fidelity vs linearized approximations.",
+      "Computation remains practical for operational envelope updates."
+    ],
+    "conclusions": [
+      "Sensitivity filtering can preserve key security constraints while lowering solve time.",
+      "Fairness metric choice materially changes individual DER envelopes."
+    ],
+    "contributions": [
+      "Sensitivity-filtering strategy to prune low-impact dimensions in robust envelope computation.",
+      "Empirical comparison of fairness metrics in envelope allocation on Australian representative feeders."
+    ],
+    "future_work": [
+      "Integrate with real-time DSO workflows and state estimation updates.",
+      "Assess uncertainty calibration and robustness under forecast misspecification."
+    ],
+    "key_equations": [
+      "RDOE feasibility set: \\mathcal{E}_t = \\{u_t \\mid \\exists x_t: g(x_t,u_t,\\xi_t) \\le 0,\\ \\forall \\xi_t \\in \\Xi_t\\}",
+      "UTOPF objective template: \\min_{x_t,u_t} f(x_t,u_t) \\text{ s.t. } h(x_t,u_t)=0,\\ g(x_t,u_t)\\le0"
+    ],
+    "limitations": [
+      "Validation is simulation-based on representative networks; broader deployment evidence is still needed.",
+      "Scalability to very large feeder portfolios is not fully characterized."
+    ],
+    "source_type": "paper",
+    "summary": "Introduces a sensitivity-filtered non-convex UTOPF workflow for robust DOE allocation, aiming to preserve network security under uncertainty while reducing computational burden.",
+    "title": "Computation of Robust Dynamic Operating Envelopes Based on Non-convex OPF for Unbalanced Distribution Networks",
+    "url": "https://arxiv.org/abs/2404.03355v2",
+    "year": 2024
+  },
+  {
+    "assumptions": [
+      "Linearized power flow captures dominant network response.",
+      "Uncertainty set is polyhedral/box-like for tractable robust reformulation."
+    ],
+    "authors": [
+      "Y. Liu",
+      "A. Nazaripouya",
+      "L. Zhang"
+    ],
+    "citation": "KA02",
+    "claims": [
+      "Linear robust envelopes are practical for frequent recomputation.",
+      "Ignoring uncertainty degrades security margins."
+    ],
+    "conclusions": [
+      "Linear robust DOE is computationally efficient but model-error sensitive.",
+      "Useful as a baseline against non-convex robust OPF."
+    ],
+    "contributions": [
+      "Linear OPF robust DOE pipeline with uncertainty handling.",
+      "Demonstrates speed/feasibility improvements for operations."
+    ],
+    "future_work": [
+      "Hybrid methods that retain nonlinear fidelity for high-sensitivity constraints."
+    ],
+    "key_equations": [
+      "Linearized sensitivity mapping: \\Delta v \\approx J_v \\Delta p + K_v \\Delta q",
+      "Robust linear constraints: A u \\le b - \\max_{\\xi\\in\\Xi} B\\xi"
+    ],
+    "limitations": [
+      "Approximation error from linearization can misestimate feasible region boundaries."
+    ],
+    "source_type": "paper",
+    "summary": "Presents a linearized robust DOE method to make envelope computation tractable for distribution operation and compares against non-robust baselines.",
+    "title": "Linear OPF-Based Method for Computing Robust Dynamic Operating Envelopes for Distribution Networks",
+    "url": "https://doi.org/10.35833/MPCE.2023.000653",
+    "year": 2024
+  },
+  {
+    "assumptions": [
+      "Unbalanced feeder model and uncertainty over demand/generation realization.",
+      "Robustness level is policy-selected."
+    ],
+    "authors": [
+      "Y. Liu",
+      "J. H. Braslavsky",
+      "G. C. Verbi\u010d"
+    ],
+    "citation": "KA03",
+    "claims": [
+      "Robust envelopes reduce risk of violations versus deterministic envelopes."
+    ],
+    "conclusions": [
+      "Robustification is necessary when forecast and parameter errors are non-negligible."
+    ],
+    "contributions": [
+      "Formal robust DOE construction for practical DSO operation."
+    ],
+    "future_work": [
+      "Adaptive uncertainty-set tuning with online feedback."
+    ],
+    "key_equations": [
+      "Chance/robust template: \\mathbb{P}(g(x,u,\\xi)\\le0)\\ge1-\\epsilon or \\forall \\xi\\in\\Xi, g(x,u,\\xi)\\le0"
+    ],
+    "limitations": [
+      "Conservative settings can reduce DER utilization."
+    ],
+    "source_type": "paper",
+    "summary": "Formulates robust envelopes for DER integration in unbalanced networks and quantifies security\u2013utilization tradeoffs under uncertainty.",
+    "title": "Robust Dynamic Operating Envelopes for DER Integration in Unbalanced Distribution Networks",
+    "url": "https://doi.org/10.1109/TPWRS.2023.3308104",
+    "year": 2023
+  },
+  {
+    "assumptions": [
+      "Scenario set approximates uncertainty distribution.",
+      "Day-ahead forecasts available."
+    ],
+    "authors": [
+      "Y. Liu",
+      "M. B. Dinu",
+      "A. M. O\u2019Connell"
+    ],
+    "citation": "KA04",
+    "claims": [
+      "Improves day-ahead envelope quality under PV variability."
+    ],
+    "conclusions": [
+      "Stochastic treatment outperforms static deterministic bounds in volatile PV settings."
+    ],
+    "contributions": [
+      "Data-driven stochastic UTOPF formulation for DOE computation."
+    ],
+    "future_work": [
+      "Couple day-ahead and intraday updates."
+    ],
+    "key_equations": [
+      "Stochastic OPF objective: \\min \\mathbb{E}_{\\xi}[f(x,u,\\xi)]",
+      "Scenario constraints: g(x_s,u,\\xi_s)\\le0,\\ \forall s\\in\\mathcal{S}"
+    ],
+    "limitations": [
+      "Quality depends on scenario generation and forecast quality."
+    ],
+    "source_type": "paper",
+    "summary": "Proposes stochastic UTOPF for day-ahead DOE scheduling using data-driven uncertainty representations for rooftop PV-heavy feeders.",
+    "title": "Day-Ahead Dynamic Operating Envelopes in Low-Voltage Distribution Networks with Rooftop PVs: A Data-Driven Stochastic UTOPF Method",
+    "url": "https://doi.org/10.1016/j.segan.2024.101528",
+    "year": 2024
+  },
+  {
+    "assumptions": [
+      "Same feeder data and operating snapshots across methods.",
+      "Solver tolerances harmonized for fair comparison."
+    ],
+    "authors": [
+      "M. B. Dinu",
+      "Y. Liu",
+      "A. M. O\u2019Connell"
+    ],
+    "citation": "KA05",
+    "claims": [
+      "Model choice materially changes envelope size and violation risk."
+    ],
+    "conclusions": [
+      "No single model dominates all operating conditions; context-aware selection is needed."
+    ],
+    "contributions": [
+      "Systematic comparison of model/solver choices for DOE workflows."
+    ],
+    "future_work": [
+      "Auto-selection/hybridization of DOE solvers by condition."
+    ],
+    "key_equations": [
+      "Model family comparison around AC, linearized AC, and approximate DistFlow constraints."
+    ],
+    "limitations": [
+      "Results depend on tested feeder set and operating scenarios."
+    ],
+    "source_type": "paper",
+    "summary": "Benchmarks DOE outcomes across alternative unbalanced power-flow models and solver strategies to quantify fidelity-speed tradeoffs.",
+    "title": "Dynamic Operating Envelopes in Unbalanced Distribution Systems: Comparison of Power Flow Models and Solution Methods",
+    "url": "https://doi.org/10.1016/j.segan.2024.101339",
+    "year": 2024
+  },
+  {
+    "assumptions": [
+      "Smart meter data quality is sufficient for model training.",
+      "Operational constraints are enforced downstream or in training."
+    ],
+    "authors": [
+      "Y. Liu",
+      "M. B. Dinu",
+      "A. M. O\u2019Connell"
+    ],
+    "citation": "KA06",
+    "claims": [
+      "Data-driven DOE can approximate optimization-based envelopes at lower operational cost."
+    ],
+    "conclusions": [
+      "AMI-informed methods are promising when validated with physical constraints."
+    ],
+    "contributions": [
+      "Data-driven DOE workflow leveraging AMI data.",
+      "Quantifies practical deployment potential where telemetry is limited."
+    ],
+    "future_work": [
+      "Online retraining and uncertainty-aware prediction intervals."
+    ],
+    "key_equations": [
+      "Learning-based mapping: u_t = f_\\theta(z_t) with security post-check g(x_t,u_t)\\le0"
+    ],
+    "limitations": [
+      "Model drift and dataset shift risks."
+    ],
+    "source_type": "paper",
+    "summary": "Uses smart-meter-driven models to estimate dynamic envelopes in LV networks, reducing dependence on fully instrumented state estimation.",
+    "title": "Data-Driven Dynamic Operating Envelope in LV Distribution Networks with Smart Meter Data",
+    "url": "https://doi.org/10.1016/j.apenergy.2025.125469",
+    "year": 2025
+  },
+  {
+    "assumptions": [
+      "Training data spans relevant operating conditions.",
+      "Interpretability metrics correlate with physical sensitivities."
+    ],
+    "authors": [
+      "Y. Liu",
+      "X. Liang",
+      "G. Ledwich"
+    ],
+    "citation": "KA07",
+    "claims": [
+      "Interpretability can improve operator trust without major accuracy loss."
+    ],
+    "conclusions": [
+      "Explainable surrogates are viable complements to OPF-based computation."
+    ],
+    "contributions": [
+      "Interpretable ML DOE model and evaluation protocol."
+    ],
+    "future_work": [
+      "Hybrid OPF-ML envelopes with certifiable safeguards."
+    ],
+    "key_equations": [
+      "Interpretable surrogate: u = f_\\theta(z),\\ partial u/\\partial z_i interpreted as feature influence"
+    ],
+    "limitations": [
+      "Out-of-distribution behavior remains a concern."
+    ],
+    "source_type": "paper",
+    "summary": "Develops an interpretable deep-learning approach for DOEs with sensitivity-based explanations linked to network conditions.",
+    "title": "Interpretable Dynamic Operating Envelopes in Distribution Systems via Deep Learning",
+    "url": "https://doi.org/10.3390/en18102529",
+    "year": 2025
+  },
+  {
+    "assumptions": [
+      "Fairness encoded via selected utility function.",
+      "Network model sufficiently accurate for allocation-level decisions."
+    ],
+    "authors": [
+      "Y. Liu",
+      "D. J. Hill",
+      "J. H. Braslavsky"
+    ],
+    "citation": "KA08",
+    "claims": [
+      "Fairness criteria significantly re-shape envelopes compared with purely technical maxima."
+    ],
+    "conclusions": [
+      "Distributional outcomes should be explicit design choices in DOE policy."
+    ],
+    "contributions": [
+      "Formal fairness-aware DOE allocation framework."
+    ],
+    "future_work": [
+      "Participatory fairness parameter selection and regulatory integration."
+    ],
+    "key_equations": [
+      "\\alpha-fair utility: U(u)=\\sum_i w_i\\frac{u_i^{1-\\alpha}}{1-\\alpha}",
+      "Envelope allocation OP: \\max_u U(u)\\ \text{s.t. network constraints}"
+    ],
+    "limitations": [
+      "Stakeholder-specific fairness definitions can conflict."
+    ],
+    "source_type": "paper",
+    "summary": "Studies DOE allocation with technical feasibility and fairness objectives, highlighting equity impacts on DER curtailment distribution.",
+    "title": "Allocation Dynamic Operating Envelopes to DERs in Distribution Networks Considering Technical and Equitable Criteria",
+    "url": "https://doi.org/10.1109/TSTE.2023.3275082",
+    "year": 2023
+  },
+  {
+    "assumptions": [
+      "Participants accept DOE-constrained bids.",
+      "Network constraints represented in clearing."
+    ],
+    "authors": [
+      "Y. Liu",
+      "R. Liu",
+      "L. Zhang"
+    ],
+    "citation": "KA09",
+    "claims": [
+      "DOE-aware P2P trading reduces violation risk while retaining market flexibility."
+    ],
+    "conclusions": [
+      "Local markets and envelopes are complementary when jointly optimized."
+    ],
+    "contributions": [
+      "Integrates DOE policy into local market mechanism design."
+    ],
+    "future_work": [
+      "Real-world pilot evaluation with dynamic participation."
+    ],
+    "key_equations": [
+      "Market clearing with envelopes: \\max_{p} W(p)\\ \text{s.t. } p_i \\in [\\underline{u}_i,\\overline{u}_i]"
+    ],
+    "limitations": [
+      "Behavioral and participation uncertainties not fully modeled."
+    ],
+    "source_type": "paper",
+    "summary": "Couples DOE constraints with P2P market clearing to enforce network security during local trading.",
+    "title": "Dynamic Operating Envelope-Enabled Peer-to-Peer Trading in Distribution Networks",
+    "url": "https://doi.org/10.1109/TSG.2023.3297366",
+    "year": 2024
+  },
+  {
+    "assumptions": [
+      "Disagreement points are well-defined.",
+      "Participants are rational and bargaining-compatible."
+    ],
+    "authors": [
+      "Y. Liu",
+      "A. M. O\u2019Connell",
+      "G. C. Verbi\u010d"
+    ],
+    "citation": "KA10",
+    "claims": [
+      "Bargaining can improve perceived fairness and acceptance."
+    ],
+    "conclusions": [
+      "Mechanism design is central for deployable DOE allocation."
+    ],
+    "contributions": [
+      "Bargaining mechanism for envelope allocation fairness-efficiency tradeoff."
+    ],
+    "future_work": [
+      "Incentive compatibility under strategic behavior."
+    ],
+    "key_equations": [
+      "Nash bargaining objective: \\max \\prod_i (u_i-u_i^0)",
+      "Equivalent convex form: \\max \\sum_i \\log(u_i-u_i^0)"
+    ],
+    "limitations": [
+      "Requires robust parameterization of disagreement utilities."
+    ],
+    "source_type": "paper",
+    "summary": "Uses bargaining/game-theoretic mechanisms to allocate envelopes among DER participants under network constraints.",
+    "title": "Bargaining-Based Dynamic Operating Envelopes Allocation Method in Distribution Networks",
+    "url": "https://doi.org/10.1109/TSG.2025.3566419",
+    "year": 2025
+  },
+  {
+    "assumptions": [
+      "Coordination framework between market and network control exists."
+    ],
+    "authors": [
+      "Y. Liu",
+      "X. Han",
+      "M. Shahidehpour"
+    ],
+    "citation": "KA11",
+    "claims": [
+      "Cooperative optimization increases welfare while respecting grid limits."
+    ],
+    "conclusions": [
+      "DOE can be embedded into advanced local coordination frameworks."
+    ],
+    "contributions": [
+      "Unified optimization of energy trading and secure operation via DOE."
+    ],
+    "future_work": [
+      "Distributed implementations with communication constraints."
+    ],
+    "key_equations": [
+      "Bi-level/cooperative objective with voltage constraints v_{min}\\le v\\le v_{max}."
+    ],
+    "limitations": [
+      "Coordination overhead may be high in practice."
+    ],
+    "source_type": "paper",
+    "summary": "Jointly optimizes trading and voltage regulation with DOE constraints in cooperative settings.",
+    "title": "Dynamic-Operating-Envelope-Integrated Cooperative Energy Trading and Voltage Regulation in Distribution Networks",
+    "url": "https://doi.org/10.1109/TPWRS.2024.3510673",
+    "year": 2025
+  },
+  {
+    "assumptions": [
+      "EV availability and user preferences can be represented in market model."
+    ],
+    "authors": [
+      "Y. Liu",
+      "Z. Wang",
+      "J. A. Taylor"
+    ],
+    "citation": "KA12",
+    "claims": [
+      "EV flexibility under DOE constraints can improve utilization without violating limits."
+    ],
+    "conclusions": [
+      "DOE can act as a practical interface between network operation and market dispatch."
+    ],
+    "contributions": [
+      "Integrates EV flexibility into DOE-constrained market operation."
+    ],
+    "future_work": [
+      "Real-time EV uncertainty handling and user incentive design."
+    ],
+    "key_equations": [
+      "EV-constrained market optimization subject to envelope bounds and network constraints."
+    ],
+    "limitations": [
+      "Dependence on EV behavior forecasting."
+    ],
+    "source_type": "paper",
+    "summary": "Investigates DOE-informed local energy markets with EV flexibility and network-security constraints.",
+    "title": "Dynamic Operating Envelope-Based Local Energy Market for Prosumers with EVs in Distribution Networks",
+    "url": "https://doi.org/10.1109/TSG.2023.3302270",
+    "year": 2023
+  },
+  {
+    "assumptions": [
+      "Distribution-level market can enforce network-secure limits."
+    ],
+    "authors": [
+      "Y. Liu",
+      "J. H. Braslavsky",
+      "G. C. Verbi\u010d"
+    ],
+    "citation": "KA13",
+    "claims": [
+      "Security limits preserve operation while enabling market flexibility."
+    ],
+    "conclusions": [
+      "Policy-compatible market design requires explicit network-security interfaces."
+    ],
+    "contributions": [
+      "Prosumer-centric trading framework anchored by dynamic secure bounds."
+    ],
+    "future_work": [
+      "Field-trial integration with existing market platforms."
+    ],
+    "key_equations": [
+      "Secure limit coupling: p_i\\in\\mathcal{U}_i(t),\\ sum_i p_i with AC network feasibility constraints."
+    ],
+    "limitations": [
+      "Implementation requires DSO-market coordination protocols."
+    ],
+    "source_type": "paper",
+    "summary": "Defines network-secure dynamic limits for prosumer-centric P2P trading in distribution systems.",
+    "title": "A Framework for Prosumer-Centric Peer-to-Peer Trading in Distribution Networks with Dynamic Network-Secure Limits",
+    "url": "https://doi.org/10.1016/j.apenergy.2024.122906",
+    "year": 2024
+  },
+  {
+    "assumptions": [
+      "Responsive loads follow dispatch signals within modeled flexibility bounds."
+    ],
+    "authors": [
+      "Y. Liu",
+      "M. B. Dinu",
+      "A. M. O\u2019Connell"
+    ],
+    "citation": "KA14",
+    "claims": [
+      "DOE-enabled DR improves flexibility while controlling violations."
+    ],
+    "conclusions": [
+      "DOE can operationalize secure DR in distribution systems."
+    ],
+    "contributions": [
+      "Validation-oriented DOE demand response framework."
+    ],
+    "future_work": [
+      "Broader pilots and integration with tariff/incentive mechanisms."
+    ],
+    "key_equations": [
+      "Demand response scheduling under envelope constraints and voltage/current limits."
+    ],
+    "limitations": [
+      "Validation context may not cover all feeder archetypes."
+    ],
+    "source_type": "paper",
+    "summary": "Validates DOE-enabled demand response operation with practical workflow and network-security criteria.",
+    "title": "Development and Validation of Dynamic Operating Envelope Enabled Demand Response in Distribution Networks",
+    "url": "https://doi.org/10.1016/j.apenergy.2024.125150",
+    "year": 2025
+  },
+  {
+    "assumptions": [
+      "Operating region can be represented with tractable approximations."
+    ],
+    "authors": [
+      "Y. Liu",
+      "G. C. Verbi\u010d",
+      "J. H. Braslavsky"
+    ],
+    "citation": "KA15",
+    "claims": [
+      "Time-varying regions better capture network flexibility than static limits."
+    ],
+    "conclusions": [
+      "Temporal adaptation is essential for high-DER feeders."
+    ],
+    "contributions": [
+      "Generalized feeder/user operating-region formulation."
+    ],
+    "future_work": [
+      "Uncertainty-aware and market-integrated operating regions."
+    ],
+    "key_equations": [
+      "Operating region: \\mathcal{R}_t = \\{p_t : \\exists x_t, g(x_t,p_t)\\le0\\}."
+    ],
+    "limitations": [
+      "Relies on model and forecast quality."
+    ],
+    "source_type": "paper",
+    "summary": "Defines time-varying operating regions for end-users/feeders, closely related to dynamic envelope concepts.",
+    "title": "Time-Varying Operating Regions of End-Users and Feeders in Low-Voltage Distribution Networks",
+    "url": "https://doi.org/10.1109/TPWRS.2023.3302421",
+    "year": 2023
+  },
+  {
+    "assumptions": [
+      "Agents optimize locally under communicated envelope signals."
+    ],
+    "authors": [
+      "M. Huang",
+      "Y. Liu",
+      "D. P. Palomar"
+    ],
+    "citation": "KA16",
+    "claims": [
+      "Decentralization can preserve welfare while respecting network limits."
+    ],
+    "conclusions": [
+      "Envelope-aware decomposition is promising for scalable coordination."
+    ],
+    "contributions": [
+      "Decentralized framework tying welfare maximization to envelope controls."
+    ],
+    "future_work": [
+      "Asynchronous and robust decentralized variants."
+    ],
+    "key_equations": [
+      "Decentralized welfare objective with envelope feasibility constraints."
+    ],
+    "limitations": [
+      "Communication and convergence constraints in practice."
+    ],
+    "source_type": "paper",
+    "summary": "Studies decentralized welfare optimization under operating-envelope constraints.",
+    "title": "Operating-Envelopes-Aware Decentralized Welfare Maximization",
+    "url": "https://doi.org/10.1109/Allerton58177.2023.10313459",
+    "year": 2023
+  },
+  {
+    "assumptions": [
+      "Negotiation protocol converges to feasible allocation."
+    ],
+    "authors": [
+      "Y. Liu",
+      "M. B. Dinu",
+      "A. M. O\u2019Connell"
+    ],
+    "citation": "KA17",
+    "claims": [
+      "Bargaining improves equity-efficiency balance."
+    ],
+    "conclusions": [
+      "Method warrants extended journal treatment."
+    ],
+    "contributions": [
+      "Early conference validation of bargaining approach."
+    ],
+    "future_work": [
+      "Comprehensive benchmarking and field-oriented validation."
+    ],
+    "key_equations": [
+      "Bargaining optimization over envelope variables under network constraints."
+    ],
+    "limitations": [
+      "Conference-scale evaluation scope."
+    ],
+    "source_type": "paper",
+    "summary": "Conference precursor introducing bargaining-based DOE allocation.",
+    "title": "A Bargaining-Based Dynamic Operating Envelopes Allocation Method in Distribution Networks",
+    "url": "https://doi.org/10.1109/PESGM51994.2024.10688561",
+    "year": 2024
+  },
+  {
+    "assumptions": [
+      "Radial structure and operating conditions meeting exactness requirements."
+    ],
+    "authors": [
+      "N. Li",
+      "L. Chen",
+      "S. H. Low"
+    ],
+    "citation": "KA18",
+    "claims": [
+      "Convex relaxation can be exact in relevant regimes."
+    ],
+    "conclusions": [
+      "Enables computationally tractable optimization with strong fidelity guarantees."
+    ],
+    "contributions": [
+      "Exact/tractable OPF approach in unbalanced feeders."
+    ],
+    "future_work": [
+      "Broaden exactness to wider network classes."
+    ],
+    "key_equations": [
+      "Unbalanced branch-flow constraints in phase domain.",
+      "SOCP relaxation exactness conditions."
+    ],
+    "limitations": [
+      "Exactness not universal for all loading/topologies."
+    ],
+    "source_type": "paper",
+    "summary": "Develops exact OPF formulations for unbalanced systems with high PV penetration, foundational for accurate envelope computation.",
+    "title": "Exact Optimal Power Dispatch in Unbalanced Distribution Systems With High PV Penetration",
+    "url": "https://doi.org/10.1109/TPWRS.2018.2869195",
+    "year": 2018
+  },
+  {
+    "assumptions": [
+      "Approximation error remains controlled over operating region."
+    ],
+    "authors": [
+      "S. Jalali",
+      "N. Li",
+      "S. H. Low"
+    ],
+    "citation": "KA19",
+    "claims": [
+      "Approximation can preserve decision quality under defined conditions."
+    ],
+    "conclusions": [
+      "Useful tradeoff path between full AC fidelity and scalability."
+    ],
+    "contributions": [
+      "Error-aware approximation and relaxation framework."
+    ],
+    "future_work": [
+      "Adaptive approximation switching with condition monitoring."
+    ],
+    "key_equations": [
+      "Approximate model: F(x)\\approx \\tilde{F}(x)",
+      "Relaxed feasible set: \\mathcal{X}\\subseteq\\tilde{\\mathcal{X}}"
+    ],
+    "limitations": [
+      "Error bounds may widen under stressed operating conditions."
+    ],
+    "source_type": "paper",
+    "summary": "Analyzes approximation/relaxation methods for unbalanced network-level optimization relevant to scalable DOE computation.",
+    "title": "Network-Level Optimization for Unbalanced Power Distribution System: Approximation and Relaxation",
+    "url": "https://doi.org/10.1109/TPWRS.2021.3066146",
+    "year": 2021
+  },
+  {
+    "assumptions": [
+      "Local Hessian approximation sufficiently accurate and invertible."
+    ],
+    "authors": [
+      "S. Jalali",
+      "E. Dall\u2019Anese",
+      "S. H. Low"
+    ],
+    "citation": "KA20",
+    "claims": [
+      "Projected Newton improves convergence speed over first-order methods."
+    ],
+    "conclusions": [
+      "Second-order online methods are promising for distribution control."
+    ],
+    "contributions": [
+      "Fast online control algorithm for unbalanced distribution voltage regulation."
+    ],
+    "future_work": [
+      "Distributed second-order variants with limited communication."
+    ],
+    "key_equations": [
+      "Projected Newton step: x^{k+1}=\\Pi_{\\mathcal{X}}(x^k-\\alpha_k H^{-1}\\nabla f(x^k))"
+    ],
+    "limitations": [
+      "Computation/communication constraints in embedded deployment."
+    ],
+    "source_type": "paper",
+    "summary": "Develops online projected-Newton voltage control for unbalanced networks, relevant for real-time envelope enforcement loops.",
+    "title": "Online Voltage Control for Unbalanced Distribution Networks Using Projected Newton Method",
+    "url": "https://doi.org/10.1109/TPWRS.2022.3144246",
+    "year": 2022
+  },
+  {
+    "assumptions": [
+      "Hierarchy partitions network with manageable coupling."
+    ],
+    "authors": [
+      "Y. Cao",
+      "W. Li",
+      "Q. Guo"
+    ],
+    "citation": "KA21",
+    "claims": [
+      "Improves scalability while maintaining feasible operation."
+    ],
+    "conclusions": [
+      "Hierarchical optimization is suitable for large feeder coordination."
+    ],
+    "contributions": [
+      "Improved-gradient hierarchical OPF for unbalanced networks."
+    ],
+    "future_work": [
+      "Adaptive partitioning and asynchronous updates."
+    ],
+    "key_equations": [
+      "Hierarchical decomposition: \\min_x f(x)=\\sum_a f_a(x_a) + coupling terms"
+    ],
+    "limitations": [
+      "Performance sensitive to partitioning quality."
+    ],
+    "source_type": "paper",
+    "summary": "Presents hierarchical OPF decomposition for unbalanced networks with improved gradient updates, relevant for scalable DOE solvers.",
+    "title": "Hierarchical Optimal Power Flow Algorithm in Three-Phase Unbalanced Distribution Networks Based on Improved Gradient Method",
+    "url": "https://doi.org/10.1109/TCNS.2024.3425633",
+    "year": 2024
+  },
+  {
+    "assumptions": [
+      "Operating point and perturbation magnitudes keep expansion valid."
+    ],
+    "authors": [
+      "L. Wang",
+      "Y. Cao",
+      "M. Pan"
+    ],
+    "citation": "KA22",
+    "claims": [
+      "Taylor-based robustification can reduce computational burden."
+    ],
+    "conclusions": [
+      "Approximation offers practical tradeoffs for uncertainty handling."
+    ],
+    "contributions": [
+      "Robust PF approximation method for unbalanced systems."
+    ],
+    "future_work": [
+      "Higher-order or adaptive expansion methods."
+    ],
+    "key_equations": [
+      "First-order expansion: g(x,\\xi)\\approx g(x,\\bar{\\xi})+\\nabla_\\xi g(x,\\bar{\\xi})(\\xi-\\bar{\\xi})"
+    ],
+    "limitations": [
+      "Accuracy can degrade under large uncertainty excursions."
+    ],
+    "source_type": "paper",
+    "summary": "Uses Taylor expansion to derive robust approximations for unbalanced robust power flow.",
+    "title": "Taylor-Expansion-Based Robust Power Flow for Three-Phase Unbalanced Distribution Networks",
+    "url": "https://doi.org/10.1109/PESGM51994.2024.10689162",
+    "year": 2024
+  },
+  {
+    "assumptions": [
+      "Problem decomposition aligns with network partitions.",
+      "Reliable communication among agents."
+    ],
+    "authors": [
+      "M. Z. Ahmadi",
+      "D. J. Hill",
+      "A. M. O\u2019Connell"
+    ],
+    "citation": "KA23",
+    "claims": [
+      "Distributed methods can scale better than centralized OPF."
+    ],
+    "conclusions": [
+      "Decentralized optimization is viable for unbalanced OPF."
+    ],
+    "contributions": [
+      "Distributed OPF for three-phase unbalanced settings."
+    ],
+    "future_work": [
+      "Robust/distributed implementations under packet loss and delay."
+    ],
+    "key_equations": [
+      "Distributed update form with coupling multipliers (ADMM-style decomposition)."
+    ],
+    "limitations": [
+      "Convergence speed depends on tuning and communication latency."
+    ],
+    "source_type": "paper",
+    "summary": "Introduces a distributed OPF strategy in three-phase unbalanced networks, relevant for decentralized DOE computations.",
+    "title": "A Distributed Approach in Solving Optimal Power Flow in Three-Phase Unbalanced Networks",
+    "url": "https://doi.org/10.1109/AUPEC.2018.8757955",
+    "year": 2019
+  },
+  {
+    "assumptions": [
+      "Convexified/local approximations support decomposition."
+    ],
+    "authors": [
+      "M. Z. Ahmadi"
+    ],
+    "citation": "KA24",
+    "claims": [
+      "Distributed OPF is practical for unbalanced systems under proper decomposition."
+    ],
+    "conclusions": [
+      "Algorithmic decomposition can reduce central solver burden."
+    ],
+    "contributions": [
+      "Detailed derivation and implementation-oriented distributed OPF treatment."
+    ],
+    "future_work": [
+      "Validation on larger realistic feeders and robustness extensions."
+    ],
+    "key_equations": [
+      "Lagrangian decomposition of OPF into local subproblems with dual coordination."
+    ],
+    "limitations": [
+      "Dependent on model assumptions and test systems used."
+    ],
+    "source_type": "paper",
+    "summary": "Thesis-level derivation of distributed OPF for unbalanced systems with implementation and algorithmic detail.",
+    "title": "A Distributed Approach in Solving OPF in Three-Phase Unbalanced Networks",
+    "url": "https://doi.org/10.37099/mtu.dc.etd-restricted/210",
+    "year": 2014
+  },
+  {
+    "assumptions": [
+      "Reactive capability limits modeled for DER inverters.",
+      "Unbalanced network model retained."
+    ],
+    "authors": [
+      "A. Bernstein",
+      "E. Dall\u2019Anese",
+      "L. Reyes-Chamorro"
+    ],
+    "citation": "KA25",
+    "claims": [
+      "Coordinated reactive dispatch can effectively regulate unbalanced voltage profiles."
+    ],
+    "conclusions": [
+      "Optimization-based VAR control supports high-DER operation."
+    ],
+    "contributions": [
+      "Optimization framework for unbalanced voltage regulation."
+    ],
+    "future_work": [
+      "Distributed and uncertainty-aware VAR optimization."
+    ],
+    "key_equations": [
+      "Voltage objective with reactive dispatch: \\min_q ||v-v^{ref}||_2^2 + \\lambda ||q||_2^2"
+    ],
+    "limitations": [
+      "Requires communication/control infrastructure and model calibration."
+    ],
+    "source_type": "paper",
+    "summary": "Addresses unbalanced reactive power optimization for voltage control, foundational for envelope feasibility enforcement.",
+    "title": "Optimal Reactive Power Dispatch for Voltage Regulation in Unbalanced Distribution Systems",
+    "url": "https://doi.org/10.1109/TPWRS.2015.2451519",
+    "year": 2016
+  },
+  {
+    "assumptions": [
+      "Radial network emphasis.",
+      "Relaxation exactness under suitable conditions."
+    ],
+    "authors": [
+      "M. Farivar",
+      "S. H. Low"
+    ],
+    "citation": "KA26",
+    "claims": [
+      "Convex relaxations can solve OPF exactly under practical conditions."
+    ],
+    "conclusions": [
+      "Branch-flow model is central to distribution OPF tractability."
+    ],
+    "contributions": [
+      "Branch-flow formalism and convexification pathway."
+    ],
+    "future_work": [
+      "Generalization to broader mesh/unbalanced settings."
+    ],
+    "key_equations": [
+      "P_{ij}=\\sum_{k:j\\to k}P_{jk}+p_j+r_{ij}l_{ij}",
+      "Q_{ij}=\\sum_{k:j\\to k}Q_{jk}+q_j+x_{ij}l_{ij}",
+      "v_j=v_i-2(r_{ij}P_{ij}+x_{ij}Q_{ij})+(r_{ij}^2+x_{ij}^2)l_{ij}",
+      "l_{ij}v_i=P_{ij}^2+Q_{ij}^2"
+    ],
+    "limitations": [
+      "Exactness depends on topology and operating region."
+    ],
+    "source_type": "paper",
+    "summary": "Introduces branch-flow OPF relaxations, a core foundation for tractable distribution optimization.",
+    "title": "Branch Flow Model: Relaxations and Convexification\u2014Part I",
+    "url": "https://doi.org/10.1109/TPWRS.2013.2255317",
+    "year": 2013
+  },
+  {
+    "assumptions": [
+      "Similar to Part I with additional convexification constraints."
+    ],
+    "authors": [
+      "M. Farivar",
+      "S. H. Low"
+    ],
+    "citation": "KA27",
+    "claims": [
+      "Demonstrates practical solvability with convexified branch-flow model."
+    ],
+    "conclusions": [
+      "Supports broad use of branch-flow relaxations in distribution OPF."
+    ],
+    "contributions": [
+      "Complementary convexification and algorithmic treatment."
+    ],
+    "future_work": [
+      "Unbalanced and uncertain extensions."
+    ],
+    "key_equations": [
+      "Convexified OPF under branch-flow variables and SOCP structure."
+    ],
+    "limitations": [
+      "Exactness conditions remain scenario-dependent."
+    ],
+    "source_type": "paper",
+    "summary": "Extends branch-flow relaxation analysis and convexification details, including implementation aspects.",
+    "title": "Branch Flow Model: Relaxations and Convexification\u2014Part II",
+    "url": "https://doi.org/10.1109/TPWRS.2013.2255318",
+    "year": 2013
+  },
+  {
+    "assumptions": [
+      "Radial topology and condition-specific loading assumptions."
+    ],
+    "authors": [
+      "L. Gan",
+      "N. Li",
+      "U. Topcu",
+      "S. H. Low"
+    ],
+    "citation": "KA28",
+    "claims": [
+      "Under stated conditions, convex relaxation yields global optimum."
+    ],
+    "conclusions": [
+      "Gives theory underpinning many practical radial OPF tools."
+    ],
+    "contributions": [
+      "Formal exactness guarantees for convex radial OPF."
+    ],
+    "future_work": [
+      "Relaxed conditions and broader network applicability."
+    ],
+    "key_equations": [
+      "SOCP-relaxed OPF and exactness conditions on load bounds and voltage profiles."
+    ],
+    "limitations": [
+      "Conditions may fail in stressed or unusual regimes."
+    ],
+    "source_type": "paper",
+    "summary": "Provides exactness conditions for convex OPF in radial networks, foundational to envelope-optimization tractability arguments.",
+    "title": "Exact Convex Relaxation of Optimal Power Flow in Radial Networks",
+    "url": "https://doi.org/10.1109/TAC.2014.2332712",
+    "year": 2015
+  },
+  {
+    "assumptions": [
+      "Standard OPF problem structure and regularity assumptions."
+    ],
+    "authors": [
+      "L. Gan",
+      "N. Li",
+      "S. H. Low"
+    ],
+    "citation": "KA29",
+    "claims": [
+      "Different convex relaxations can be equivalent under specific conditions."
+    ],
+    "conclusions": [
+      "Guides method choice for computational efficiency and guarantees."
+    ],
+    "contributions": [
+      "Unifies relaxation perspectives and equivalence proofs."
+    ],
+    "future_work": [
+      "Extend equivalence analysis to unbalanced and robust OPF."
+    ],
+    "key_equations": [
+      "Mappings between SDP/SOCP and branch-flow-based relaxations."
+    ],
+    "limitations": [
+      "Equivalence conditions are not universal."
+    ],
+    "source_type": "paper",
+    "summary": "Analyzes equivalence relationships among OPF relaxations used in power system optimization.",
+    "title": "Equivalent Relaxations of Optimal Power Flow",
+    "url": "https://doi.org/10.1109/TAC.2014.2357112",
+    "year": 2015
+  },
+  {
+    "assumptions": [
+      "Network and cost structure satisfy sufficient conditions for exactness."
+    ],
+    "authors": [
+      "J. Lavaei",
+      "S. H. Low"
+    ],
+    "citation": "KA30",
+    "claims": [
+      "Duality gap can vanish in realistic OPF instances."
+    ],
+    "conclusions": [
+      "Convex relaxations are foundational for scalable OPF."
+    ],
+    "contributions": [
+      "Theoretical basis for convex OPF exactness in many practical cases."
+    ],
+    "future_work": [
+      "Sharper exactness characterizations in broader grids."
+    ],
+    "key_equations": [
+      "SDP-relaxed OPF primal-dual pair with rank conditions."
+    ],
+    "limitations": [
+      "Exactness can fail outside assumptions."
+    ],
+    "source_type": "paper",
+    "summary": "Landmark result on conditions for zero duality gap in OPF, motivating convex optimization approaches.",
+    "title": "Zero Duality Gap in Optimal Power Flow Problem",
+    "url": "https://doi.org/10.1109/TPWRS.2011.2160974",
+    "year": 2012
+  },
+  {
+    "assumptions": [
+      "Radial topology and admissible operating region conditions."
+    ],
+    "authors": [
+      "S. Jalali",
+      "N. Li",
+      "S. H. Low"
+    ],
+    "citation": "KA31",
+    "claims": [
+      "Convex relaxation remains exact in important practical cases with delta loads."
+    ],
+    "conclusions": [
+      "Supports convex approaches in realistic unbalanced feeder models."
+    ],
+    "contributions": [
+      "Exactness conditions in richer three-phase connection models."
+    ],
+    "future_work": [
+      "Robust exactness under uncertainty and mixed topologies."
+    ],
+    "key_equations": [
+      "Three-phase branch-flow relaxation with delta-connection constraints."
+    ],
+    "limitations": [
+      "Condition sensitivity remains a practical concern."
+    ],
+    "source_type": "paper",
+    "summary": "Extends OPF exactness analysis to practical three-phase radial networks with delta connections.",
+    "title": "Exactness of OPF Relaxation in Three-Phase Radial Networks Under Delta Connections",
+    "url": "https://doi.org/10.1109/TSG.2021.3066530",
+    "year": 2021
+  },
+  {
+    "assumptions": [
+      "Python-based workflow can support robust scientific reproducibility."
+    ],
+    "authors": [
+      "L. Thurner",
+      "A. Scheidler",
+      "F. Sch\u00e4fer",
+      "J. Menke",
+      "J. Dollichon",
+      "F. Meier",
+      "S. Meinecke",
+      "M. Braun"
+    ],
+    "citation": "KA32",
+    "claims": [
+      "Tooling lowers barrier for research and benchmarking."
+    ],
+    "conclusions": [
+      "Community-standard platform for distribution studies."
+    ],
+    "contributions": [
+      "Open-source tooling for power-flow/OPF and analysis pipelines."
+    ],
+    "future_work": [
+      "Continued solver and model support expansion."
+    ],
+    "key_equations": [],
+    "limitations": [
+      "Performance and feature parity depend on selected backends."
+    ],
+    "source_type": "paper",
+    "summary": "Introduces pandapower, widely used for power system modeling and reproducible distribution-network studies.",
+    "title": "pandapower \u2014 An Open-Source Python Tool for Convenient Modeling, Analysis, and Optimization of Electric Power Systems",
+    "url": "https://doi.org/10.1109/TPWRS.2018.2829021",
+    "year": 2018
+  },
+  {
+    "assumptions": [
+      "AC/DC OPF formulations follow MATPOWER conventions."
+    ],
+    "authors": [
+      "R. D. Zimmerman",
+      "C. E. Murillo-S\u00e1nchez",
+      "R. J. Thomas"
+    ],
+    "citation": "KA33",
+    "claims": [
+      "MATPOWER remains a robust baseline for OPF experiments."
+    ],
+    "conclusions": [
+      "Useful comparison point for DOE/UTOPF methods."
+    ],
+    "contributions": [
+      "Reference implementation and standardized test workflows."
+    ],
+    "future_work": [
+      "Interoperability improvements with distribution-focused tools."
+    ],
+    "key_equations": [],
+    "limitations": [
+      "Limited direct support for full unbalanced three-phase distribution modeling."
+    ],
+    "source_type": "paper",
+    "summary": "Describes MATPOWER 7.0 and its relevance as a baseline OPF toolchain in power-system research.",
+    "title": "MATPOWER 7.0: New Features and Legacy Compatibility",
+    "url": "https://doi.org/10.1109/TPWRS.2020.2997060",
+    "year": 2020
+  },
+  {
+    "assumptions": [
+      "Survey taxonomy captures main OPF classes through publication date."
+    ],
+    "authors": [
+      "S. Frank",
+      "I. Steponavice",
+      "S. Rebennack"
+    ],
+    "citation": "KA34",
+    "claims": [
+      "OPF method choice should be task- and system-specific."
+    ],
+    "conclusions": [
+      "No universal OPF solver dominates all scenarios."
+    ],
+    "contributions": [
+      "Methodological map of OPF formulations and solution strategies."
+    ],
+    "future_work": [
+      "Updated surveys for distribution and uncertainty-rich contexts."
+    ],
+    "key_equations": [],
+    "limitations": [
+      "Does not cover later surge in distribution-level robust/stochastic OPF methods."
+    ],
+    "source_type": "paper",
+    "summary": "Comprehensive OPF survey framing algorithm families and application tradeoffs that underpin modern DOE optimization choices.",
+    "title": "Optimal Power Flow: A Bibliographic Survey I",
+    "url": "https://doi.org/10.1002/etep.1620",
+    "year": 2012
+  },
+  {
+    "assumptions": [
+      "Review scope reflects available literature up to publication date."
+    ],
+    "authors": [
+      "Y. Liu",
+      "M. B. Dinu",
+      "A. M. O\u2019Connell"
+    ],
+    "citation": "KA35",
+    "claims": [
+      "DOE research is expanding toward robust, equitable, and market-coupled frameworks."
+    ],
+    "conclusions": [
+      "Need stronger real-world validation and interoperable implementations."
+    ],
+    "contributions": [
+      "Broad mapping of DOE research directions and open challenges."
+    ],
+    "future_work": [
+      "Standardized benchmarks and deployment-oriented validation."
+    ],
+    "key_equations": [
+      "Generic envelope definition appears in review synthesis; equation-level specifics delegated to cited primary works."
+    ],
+    "limitations": [
+      "As a review, depends on completeness/quality of included studies."
+    ],
+    "source_type": "paper",
+    "summary": "Review consolidating DOE literature across technical methods, fairness, and market integration, used here as a citation-expansion index.",
+    "title": "Dynamic Operating Envelope in the Future Distribution Grid: A Review",
+    "url": "https://doi.org/10.3390/modelling6020029",
+    "year": 2025
+  },
+  {
+    "assumptions": [],
+    "authors": [
+      "University of Kassel",
+      "Fraunhofer IEE",
+      "pandapower Contributors"
+    ],
+    "citation": "KA36",
+    "claims": [
+      "Mature open-source platform with active maintenance."
+    ],
+    "conclusions": [
+      "Strong candidate for implementation/reproduction baseline."
+    ],
+    "contributions": [
+      "Reusable simulation and OPF tooling for distribution research."
+    ],
+    "future_work": [
+      "Use pinned environments and regression tests in downstream experiments."
+    ],
+    "key_equations": [],
+    "limitations": [
+      "Solver-specific behavior and dependency versions must be controlled for reproducibility."
+    ],
+    "source_type": "paper",
+    "summary": "Mandatory seed repository; provides reproducible power-flow/OPF tooling, extensive docs, BSD-3 license, tests, and tutorials.",
+    "title": "pandapower GitHub Repository",
+    "url": "https://github.com/e2nIEE/pandapower",
+    "year": 2026
+  },
+  {
+    "assumptions": [],
+    "authors": [
+      "LANL-ANSI",
+      "PowerModels Contributors"
+    ],
+    "citation": "KA37",
+    "claims": [
+      "Facilitates reproducible OPF experimentation."
+    ],
+    "conclusions": [
+      "Useful comparative backend for envelope algorithms."
+    ],
+    "contributions": [
+      "Reusable OPF formulations and solver abstraction."
+    ],
+    "future_work": [],
+    "key_equations": [],
+    "limitations": [
+      "Primarily transmission-oriented defaults unless extended for distribution detail."
+    ],
+    "source_type": "paper",
+    "summary": "Julia package for optimization formulations in power networks; relevant backend for OPF baselines and comparisons.",
+    "title": "PowerModels.jl Repository",
+    "url": "https://github.com/lanl-ansi/PowerModels.jl",
+    "year": 2026
+  },
+  {
+    "assumptions": [],
+    "authors": [
+      "LANL-ANSI",
+      "PowerModelsDistribution Contributors"
+    ],
+    "citation": "KA38",
+    "claims": [
+      "Supports advanced distribution optimization experiments."
+    ],
+    "conclusions": [
+      "Relevant codebase for non-convex/convex baseline replication."
+    ],
+    "contributions": [
+      "Open implementation of multiphase distribution OPF formulations."
+    ],
+    "future_work": [],
+    "key_equations": [],
+    "limitations": [
+      "Integration and data-format adaptation effort may be non-trivial."
+    ],
+    "source_type": "paper",
+    "summary": "Distribution-focused Julia framework supporting multiphase unbalanced modeling and optimization.",
+    "title": "PowerModelsDistribution.jl Repository",
+    "url": "https://github.com/lanl-ansi/PowerModelsDistribution.jl",
+    "year": 2026
+  },
+  {
+    "assumptions": [],
+    "authors": [
+      "MATPOWER Developers"
+    ],
+    "citation": "KA39",
+    "claims": [
+      "Provides robust benchmark baseline for optimization methods."
+    ],
+    "conclusions": [
+      "Useful for baseline comparisons, though unbalanced LV support is limited."
+    ],
+    "contributions": [
+      "Baseline OPF workflows and standard test-case ecosystem."
+    ],
+    "future_work": [],
+    "key_equations": [],
+    "limitations": [
+      "Not specialized for three-phase unbalanced LV studies."
+    ],
+    "source_type": "paper",
+    "summary": "Reference MATLAB/Octave OPF toolkit widely used for benchmarking optimization workflows.",
+    "title": "MATPOWER Repository",
+    "url": "https://github.com/MATPOWER/matpower",
+    "year": 2026
+  },
+  {
+    "assumptions": [],
+    "authors": [
+      "DSS-Extensions Contributors"
+    ],
+    "citation": "KA40",
+    "claims": [
+      "Enables reproducible scripting around established DSO-grade simulation tooling."
+    ],
+    "conclusions": [
+      "Strong complement to OPF-centric research stacks."
+    ],
+    "contributions": [
+      "Interfacing and automation for detailed distribution simulation."
+    ],
+    "future_work": [],
+    "key_equations": [],
+    "limitations": [
+      "Model and solver behavior differs from OPF-focused frameworks."
+    ],
+    "source_type": "paper",
+    "summary": "Python interface to OpenDSS ecosystem for detailed distribution simulation, useful for validation/shadow-mode studies.",
+    "title": "OpenDSS Repository",
+    "url": "https://github.com/dss-extensions/OpenDSSDirect.py",
+    "year": 2026
+  },
+  {
+    "assumptions": [],
+    "authors": [
+      "e2nIEE",
+      "simbench Contributors"
+    ],
+    "citation": "KA41",
+    "claims": [
+      "Supports standardized, reproducible comparisons across studies."
+    ],
+    "conclusions": [
+      "Strong candidate for downstream experiment design and validation datasets."
+    ],
+    "contributions": [
+      "Benchmark-ready grid and profile datasets."
+    ],
+    "future_work": [],
+    "key_equations": [],
+    "limitations": [
+      "Regional representativeness should be matched to study context."
+    ],
+    "source_type": "paper",
+    "summary": "Provides realistic benchmark grid models and profiles across voltage levels, aligned with pandapower workflows.",
+    "title": "SimBench Repository and Dataset Framework",
+    "url": "https://github.com/e2nIEE/simbench",
+    "year": 2026
+  }
+]

@@ -1,0 +1,10 @@
+SymPy Validation Report
+dmm_c1_chain_ok: True
+dmm_c1_residual_nonnegative: True
+dmm_c2_gap_factorized: True
+dmm_c2_gap_nonnegative_under_admissibility: True
+dmm_c2_strict_positive_example: True
+hm_h3_alpha_derivative: ui**(-alpha)
+hm_h3_alpha_second_derivative: -alpha*ui**(-alpha - 1)
+hm_h3_log_derivative: -1/(u0 - ui)
+hm_h3_log_second_derivative: -1/(u0 - ui)**2

@@ -1,0 +1,78 @@
+{
+  "experiment_id": "rdoe_hybrid_validation",
+  "experiments": [
+    {
+      "id": "EXP-H1-CERTIFIED_TRIGGER_SECURITY",
+      "baselines": [
+        "Full non-convex robust UTOPF (no screening)",
+        "KA01-style sensitivity-filtered non-convex RDOE with heuristic trigger",
+        "KA02 linear robust UTOPF envelope",
+        "KA22 Taylor-expansion robust screening + fallback",
+        "Static DSO rule-based envelope limits"
+      ],
+      "seeds": [11, 23, 37, 59, 83],
+      "sweep_params": {
+        "counterexample_mode": ["none", "underestimated_L", "stale_J", "trust_region_break"],
+        "eta": ["0.002", "0.005", "0.010", "0.020"],
+        "hessian_bound_inflation": ["1.0", "1.5", "2.0", "3.0"],
+        "loading_level": ["0.6", "1.0", "1.3"],
+        "trust_region_radius_rho_pu": ["0.01", "0.02", "0.05", "0.08"],
+        "uncertainty_scale": ["0.8x", "1.0x", "1.2x", "1.5x"]
+      }
+    },
+    {
+      "id": "EXP-H2-ONLINE_UNCERTAINTY_CALIBRATION",
+      "baselines": [
+        "KA03 static robust uncertainty box",
+        "KA04 stochastic scenario-only day-ahead DOE",
+        "Fixed-quantile robust set without online recalibration",
+        "KA02 linear robust UTOPF with static uncertainty scaling",
+        "Full non-convex robust UTOPF with conservative static Xi"
+      ],
+      "seeds": [101, 211, 307, 401, 509],
+      "sweep_params": {
+        "delta": ["0.01", "0.02", "0.05", "0.10"],
+        "regime_buckets": ["tod_only", "tod_plus_weather", "tod_weather_load"],
+        "rolling_window_steps": ["288", "576", "1008"],
+        "scaling_matrix_mode": ["identity", "diag_residual", "phase_weighted_diag"],
+        "update_cadence": ["5min", "15min", "60min"]
+      }
+    },
+    {
+      "id": "EXP-H3-FAIRNESS_POLICY_SURFACE",
+      "baselines": [
+        "KA08 alpha-fair-only allocator",
+        "KA10 bargaining-only allocator",
+        "Utilitarian max-utilization allocator",
+        "Equal-share allocator",
+        "Static DSO quota/rule-based allocation"
+      ],
+      "seeds": [7, 19, 31, 43, 55],
+      "sweep_params": {
+        "alpha": ["0.0", "0.5", "1.0", "2.0", "4.0"],
+        "beta": ["0.0", "0.25", "0.5", "0.75", "1.0"],
+        "customer_weight_scheme": ["uniform", "capacity_weighted", "vulnerability_weighted"],
+        "disagreement_scale": ["0.8", "1.0", "1.2"],
+        "gamma_risk_penalty": ["0.0", "0.1", "0.25", "0.5"]
+      }
+    },
+    {
+      "id": "EXP-H4-CROSS_SOLVER_SHADOW_MODE",
+      "baselines": [
+        "Single-tool pandapower reference pipeline",
+        "PowerModelsDistribution.jl replicated pipeline",
+        "OpenDSSDirect verification pipeline",
+        "Static DSO operating procedure baseline",
+        "Linearized DOE operating policy baseline"
+      ],
+      "seeds": [13, 29, 47, 61, 79],
+      "sweep_params": {
+        "dso_baseline_mode": ["static_export_limit", "voltage_reactive_rule", "seasonal_static_cap"],
+        "harmonization_profile": ["minimal", "standard", "strict"],
+        "solver_pair": ["pandapower_vs_pmd", "pandapower_vs_opendss", "pmd_vs_opendss"],
+        "stress_case": ["nominal", "high_pv", "high_load", "topology_switch"],
+        "time_resolution": ["5min", "15min", "60min"]
+      }
+    }
+  ]
+}

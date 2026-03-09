@@ -1,0 +1,144 @@
+{
+  "acceptance_results": {
+    "EXP-H1-CERTIFIED_TRIGGER_SECURITY": {
+      "checks": {
+        "nominal_false_accept_zero": true,
+        "optimality_gap_nonnegative": true
+      },
+      "pass": true
+    },
+    "EXP-H2-ONLINE_UNCERTAINTY_CALIBRATION": {
+      "checks": {
+        "coverage_error_within_0_5pp_majority": true,
+        "overhead_within_15pct_majority": true
+      },
+      "pass": true
+    },
+    "EXP-H3-FAIRNESS_POLICY_SURFACE": {
+      "checks": {
+        "worst_decile_improvement_ge_10": true
+      },
+      "pass": true
+    },
+    "EXP-H4-CROSS_SOLVER_SHADOW_MODE": {
+      "checks": {
+        "delta_tool_utilization_le_1_5_majority": true,
+        "delta_tool_violation_le_0_1_majority": true,
+        "reproducibility_ge_95_majority": true
+      },
+      "pass": true
+    }
+  },
+  "confirmatory_analysis": {
+    "EXP-H1-CERTIFIED_TRIGGER_SECURITY": {
+      "n": 600,
+      "nominal_violation_mean": 0.014807734634134394,
+      "stress_violation_mean": 0.03257151967589364
+    },
+    "EXP-H2-ONLINE_UNCERTAINTY_CALIBRATION": {
+      "max_abs_coverage_error_pp": 0.03262968282477484,
+      "n": 600
+    },
+    "EXP-H3-FAIRNESS_POLICY_SURFACE": {
+      "n": 600,
+      "non_dominated_proxy_count": 60
+    },
+    "EXP-H4-CROSS_SOLVER_SHADOW_MODE": {
+      "n": 600,
+      "nominal_delta_util_mean": 0.591463415184794,
+      "stress_delta_util_mean": 0.8155582709423386
+    }
+  },
+  "datasets": [
+    "experiments/rdoe_hybrid_validation/data/all_experiments_raw.csv",
+    "paper/data/all_experiments_raw.csv"
+  ],
+  "figure_captions": {
+    "paper/figures/exp_h1_panels.pdf": {
+      "key_takeaway": "Nominal mode maintains zero false-accept while stress modes increase alerts and risk as expected.",
+      "panels": [
+        "Left: runtime reduction (%) by counterexample mode with 95% CI.",
+        "Right: certified false-accept rate by mode with 95% CI bands."
+      ],
+      "uncertainty": "95% confidence intervals computed as 1.96*SE across seed-baseline samples.",
+      "variables": "counterexample_mode, runtime_reduction_vs_full_nonconvex_percent, certified_false_accept_rate"
+    },
+    "paper/figures/exp_h2_panels.pdf": {
+      "key_takeaway": "Adaptive calibration tracks target risk while preserving utilization gains.",
+      "panels": [
+        "Left: reliability diagram (target delta vs empirical violation).",
+        "Right: utilization-risk frontier with 95% CI."
+      ],
+      "uncertainty": "Error bands from baseline-seed variability with normal-approximation CI.",
+      "variables": "target_delta, empirical_violation_rate_percent, mean_utilization_percent"
+    },
+    "paper/figures/exp_h3_panels.pdf": {
+      "key_takeaway": "Policy sweep reveals fairness-utilization trade-offs and improved tail equity regimes.",
+      "panels": [
+        "Left: policy surface scatter (utilization vs equity score).",
+        "Right: worst-decile curtailment distribution across weight schemes."
+      ],
+      "uncertainty": "Distribution spread shown through boxplot quartiles and outliers.",
+      "variables": "mean_utilization_percent, gini_coefficient, worst_decile_curtailment_percent"
+    },
+    "paper/figures/exp_h4_panels.pdf": {
+      "key_takeaway": "Positive shadow benefit and generally bounded cross-tool discrepancies support deployment viability.",
+      "panels": [
+        "Left: shadow-mode benefit by stress case.",
+        "Right: cross-solver utilization discrepancy with 95% CI and threshold line."
+      ],
+      "uncertainty": "Bar error bars are 95% CI from seed-stratified means.",
+      "variables": "shadow_benefit_B_shadow_percent, delta_tool_utilization_percent, solver_pair"
+    }
+  },
+  "figures": [
+    "paper/figures/exp_h1_panels.pdf",
+    "paper/figures/exp_h2_panels.pdf",
+    "paper/figures/exp_h3_panels.pdf",
+    "paper/figures/exp_h4_panels.pdf"
+  ],
+  "pdf_readability": [
+    {
+      "height": 504,
+      "path": "paper/figures/exp_h1_panels.pdf",
+      "readable": true,
+      "width": 1412
+    },
+    {
+      "height": 504,
+      "path": "paper/figures/exp_h2_panels.pdf",
+      "readable": true,
+      "width": 1412
+    },
+    {
+      "height": 504,
+      "path": "paper/figures/exp_h3_panels.pdf",
+      "readable": true,
+      "width": 1412
+    },
+    {
+      "height": 504,
+      "path": "paper/figures/exp_h4_panels.pdf",
+      "readable": true,
+      "width": 1412
+    }
+  ],
+  "sympy_report": "experiments/rdoe_hybrid_validation/sympy/sympy_validation_report.txt",
+  "sympy_results": {
+    "dmm_c1_chain_ok": true,
+    "dmm_c1_residual_nonnegative": true,
+    "dmm_c2_gap_factorized": true,
+    "dmm_c2_gap_nonnegative_under_admissibility": true,
+    "dmm_c2_strict_positive_example": true,
+    "hm_h3_alpha_derivative": "ui**(-alpha)",
+    "hm_h3_alpha_second_derivative": "-alpha*ui**(-alpha - 1)",
+    "hm_h3_log_derivative": "-1/(u0 - ui)",
+    "hm_h3_log_second_derivative": "-1/(u0 - ui)**2"
+  },
+  "tables": [
+    "paper/tables/exp-h1-certified_trigger_security_summary.csv",
+    "paper/tables/exp-h2-online_uncertainty_calibration_summary.csv",
+    "paper/tables/exp-h3-fairness_policy_surface_summary.csv",
+    "paper/tables/exp-h4-cross_solver_shadow_mode_summary.csv"
+  ]
+}
