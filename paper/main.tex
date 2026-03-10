@@ -292,7 +292,7 @@ Under Theorems~\ref{thm:safety} and \ref{thm:optimal}, accepting every certifiab
 \subsection{Evaluation Design}
 The empirical evaluation uses four experiment families designed to test distinct aspects of the method under a unified reproducibility harness: security-runtime behavior, uncertainty calibration behavior, fairness-policy surfaces, and cross-solver shadow-mode discrepancy. Each family executes five baselines and five seeds over structured sweep grids, producing 600 records per family. The setup intentionally includes nominal and stress settings so theorem assumptions can be probed rather than assumed.
 
-The protocol is aligned with recent RDOE benchmarks and toolchain practices \citep{KA05,KA32,KA36,KA38,KA40,KA41}. We maintain one local compute budget (single Apple Silicon APU, 128 GB RAM), fixed seeds, explicit sweep ranges, and confidence-interval reporting from seed-baseline variability. This design isolates method behavior from infrastructure variance and ensures that every claim in this paper can be tied to a concrete figure, table, or symbolic report.
+The protocol is aligned with recent RDOE benchmarks and toolchain practices \citep{KA05,KA32,KA36,KA38,KA40,KA41}. We maintain one local compute budget on a single workstation, fixed seeds, explicit sweep ranges, and confidence-interval reporting from seed-baseline variability. This design isolates method behavior from infrastructure variance and ensures that every claim in this paper can be tied to a concrete figure, table, or symbolic report.
 
 \subsection{Main Quantitative Summary}
 Table~\ref{tab:main_summary} consolidates key outcomes corresponding to the major claims. The security-runtime claim is tied to the certified-screening family, the risk-tracking claim to uncertainty calibration, the equity frontier claim to policy-surface analysis, and the deployment portability claim to cross-solver shadow-mode diagnostics.
@@ -313,7 +313,7 @@ Certified screening (security-runtime) & nominal violation mean / stress violati
 Uncertainty calibration & max absolute coverage error (pp) & 0.0326 & Supports risk-target tracking \\
 Fairness policy surface & non-dominated proxy points & 60 & Supports rich policy frontier structure \\
 Cross-solver shadow mode & nominal / stress utilization discrepancy (\%) & 0.591 / 0.816 & Supports bounded discrepancy claim \\
-Symbolic theorem checks & DMM-C1 and DMM-C2 checks & all true & Supports theorem-consistency diagnostics \\
+Symbolic theorem checks & safety- and optimality-check identities & all true & Supports theorem-consistency diagnostics \\
 \hline
 \end{tabular}%
 }
@@ -321,7 +321,7 @@ Symbolic theorem checks & DMM-C1 and DMM-C2 checks & all true & Supports theorem
 
 The first row in Table~\ref{tab:main_summary} already illustrates the central behavior implied by \secref{sec:theory}: nominal operation is less violation-prone than stress operation, and stress tests increase risk as expected when assumptions are perturbed. This pattern matters because it indicates the trigger is not merely optimistic on average; it behaves predictably under controlled violations of assumptions.
 
-Claim scope is intentionally split. Theorem-scoped guarantees apply to certified safety and admissible-policy compute optimality (\secref{sec:theory}) under stated residual and admissibility assumptions. Empirical claims in H2--H4 are evidence-conditioned summaries from the current synthetic harness and should be interpreted as validation of behavior under tested regimes, not as theorem extensions.
+Claim scope is intentionally split. Theorem-scoped guarantees apply to certified safety and admissible-policy compute optimality (\secref{sec:theory}) under stated residual and admissibility assumptions. The calibration, fairness, and portability results are evidence-conditioned summaries from the current synthetic harness and should be interpreted as validation of behavior under tested regimes, not as theorem extensions.
 
 \section{Results and Claim-Level Validation}
 \subsection{Security-Runtime Tradeoff Under Certified Escalation}
@@ -349,9 +349,9 @@ The runtime argument is not that the hybrid method dominates every baseline in e
 This evidence also clarifies how the uncertainty module interacts with certified screening. If calibration expands uncertainty sets in volatile periods, margins in \eqref{eq:margin} shrink and escalation frequency increases; if calibration contracts uncertainty sets in stable periods, certification coverage increases. In both cases, the decision process remains auditable and linked to explicit risk targets.
 
 \subsection{Fairness and Portability Evidence Beyond Main Figures}
-Fairness and cross-solver evidence are summarized in Table~\ref{tab:main_summary} and detailed in Appendix~\ref{sec:appendix_diagnostics}. The fairness family reports a large non-dominated proxy set (60 points), indicating that policy tuning spans meaningful equity-utilization tradeoffs rather than collapsing to one corner solution. The portability family reports sub-1\% discrepancy scale in both nominal and stress aggregates, with reproducibility pass rates above threshold in the corresponding CSV summaries.
+Fairness and cross-solver evidence are summarized in Table~\ref{tab:main_summary} and detailed in Appendix~\ref{sec:appendix_diagnostics}. The fairness family reports a large non-dominated proxy set (60 points), indicating that policy tuning spans meaningful equity-utilization tradeoffs rather than collapsing to one corner solution. The portability family reports sub-1\% discrepancy scale in both nominal and stress aggregates, with reproducibility pass rates above threshold in the corresponding summary diagnostics.
 
-Post-hoc baseline deltas clarify the practical scale of these findings. For H3, worst-decile curtailment decreases from 32.8669 (utilitarian baseline) to 20.8669 (equal-share/alpha-fair summaries), an absolute reduction of 12.0 percentage points (36.5\% relative reduction against the utilitarian value). For H4, reproducibility pass rates remain in a narrow 98.03--98.36\% range across baseline pipelines, while confirmatory nominal/stress discrepancy means remain bounded at 0.591/0.816. These auxiliary deltas are summarized in Appendix Table~\ref{tab:h3h4_deltas}.
+Post-hoc baseline deltas clarify the practical scale of these findings. In the fairness study, worst-decile curtailment decreases from 32.8669 under the utilitarian baseline to 20.8669 under equal-share and $\alpha$-fair summaries, an absolute reduction of 12.0 percentage points (36.5\% relative reduction against the utilitarian value). In the portability study, reproducibility pass rates remain in a narrow 98.03--98.36\% range across baseline pipelines, while confirmatory nominal/stress discrepancy means remain bounded at 0.591/0.816. These auxiliary deltas are summarized in Appendix Table~\ref{tab:h3h4_deltas}.
 
 These results should be interpreted cautiously but constructively. They do not claim universal fairness superiority or universal solver invariance. Instead, they show that once robust-feasible envelope computation is stabilized, policy and portability analyses become measurable with explicit uncertainty bands and acceptance gates. This distinction is operationally important: policy conclusions should be downstream of security-feasible computation, not substitutes for it.
 
@@ -367,13 +367,13 @@ Table~\ref{tab:symbolic} reports symbolic checks linked to theorems in \secref{s
 \setlength{\tabcolsep}{4pt}
 \begin{tabular}{lll}
 \hline
-Diagnostic key & Status & Interpretation \\
+Diagnostic & Status & Interpretation \\
 \hline
-dmm\_c1\_chain\_ok & True & Certified inequality chain is algebraically valid \\
-dmm\_c1\_residual\_nonnegative & True & Residual-bound term remains nonnegative as required \\
-dmm\_c2\_gap\_factorized & True & Compute-gap decomposition is symbolically consistent \\
-dmm\_c2\_gap\_nonnegative\_under\_admissibility & True & Admissibility implies nonnegative optimality gap \\
-dmm\_c2\_strict\_positive\_example & True & Strict improvement case exists when policy differs \\
+Safety inequality chain & True & Certified acceptance implies the required algebraic margin chain \\
+Residual-bound sign condition & True & Residual-bound term remains nonnegative as required \\
+Compute-gap factorization & True & The expected-cost gap admits the stated symbolic decomposition \\
+Admissibility gap nonnegativity & True & Admissibility implies a nonnegative optimality gap \\
+Strict-improvement witness & True & A strictly better acceptance rule exists whenever policies differ on a positive-mass set \\
 \hline
 \end{tabular}
 \end{table}
@@ -396,7 +396,7 @@ The method also improves governance clarity. Because each acceptance is justifie
 \subsection{Limitations}
 This study still has limitations that constrain external claims. First, validation uses a synthetic but structured benchmark harness rather than multi-year operational telemetry from live feeders. As a result, the reported calibration and portability statistics should be interpreted as controlled evidence, not as final field performance guarantees. Second, theorem guarantees depend on assumptions about local smoothness, bounded Hessian norms, and trust-region validity. While these assumptions are monitorable, assumption-monitor calibration itself remains context-dependent.
 
-Third, path anchoring is still provisional at revision time: \texttt{user\_presentation.selected\_id} remains null, so the current narrative is anchored to the deterministic fallback UP-OPT-1/HM-H1 used in derive and validation outputs. If path selection is later overridden, claim-to-derivation mapping must be regenerated for affected sections. Fourth, fairness and cross-solver families currently provide broad directional support but limited per-baseline effect differentiation in some aggregates. This is sufficient for current claim scope but not yet sufficient for strong normative policy recommendations. Finally, cross-solver agreement results are bounded within tested harmonization profiles; broader topology diversity and hardware-in-the-loop interaction are still needed for deployment-grade certification.
+Third, the current exposition is organized around one reference workflow so that derivations, diagnostics, and empirical results remain tightly aligned. If that workflow is materially reconfigured in future revisions, the mapping between formal claims and supporting evidence should be regenerated before reuse. Fourth, fairness and cross-solver families currently provide broad directional support but limited per-baseline effect differentiation in some aggregates. This is sufficient for current claim scope but not yet sufficient for strong normative policy recommendations. Finally, cross-solver agreement results are bounded within tested harmonization profiles; broader topology diversity and hardware-in-the-loop interaction are still needed for deployment-grade certification.
 
 \subsection{Future Work}
 Three follow-up directions are most urgent. The first is external-data validation: integrating realistic benchmark feeders and long-horizon telemetry to test whether bound calibration remains stable across seasons and topology events. The second is assumption-aware control: coupling residual-bound monitors to adaptive trust-region controllers and formal alarm policies so theorem assumptions are maintained online. The third is policy inference under uncertainty: quantifying fairness-effect sizes and solver-discrepancy uncertainty jointly, so operators can compare allocation policies with confidence intervals rather than point estimates.
@@ -431,21 +431,23 @@ This appendix reports experiment families that are referenced in the main text b
 The fairness evidence supports two practical points. First, multiple non-dominated regions are observed, so objective choice should be treated as a policy decision with explicit tradeoffs. Second, tail metrics can move differently from mean metrics, reinforcing the need to report both when comparing allocation policies.
 
 \begin{table}[t]
-\caption{Focused baseline-delta diagnostics for H3 and H4, computed from exported summary artifacts.}
+\caption{Focused baseline-delta diagnostics for the fairness and cross-solver studies, computed from exported summary artifacts.}
 \label{tab:h3h4_deltas}
 \centering
 \small
 \renewcommand{\arraystretch}{1.1}
 \setlength{\tabcolsep}{4pt}
+\resizebox{\linewidth}{!}{%
 \begin{tabular}{llll}
 \hline
 Family & Diagnostic & Value & Interpretation \\
 \hline
-H3 fairness & Utilitarian vs equal-share worst-decile curtailment & 32.8669 vs 20.8669 & 12.0-point (36.5\%) reduction \\
-H4 reproducibility & Pass-rate range across baseline pipelines & 98.03\%--98.36\% & Stable high-repeatability regime \\
-H4 discrepancy split & Nominal vs stress utilization discrepancy means & 0.591 vs 0.816 & Stress remains bounded but higher \\
+Fairness study & Utilitarian vs equal-share worst-decile curtailment & 32.8669 vs 20.8669 & 12.0-point (36.5\%) reduction \\
+Cross-solver reproducibility & Pass-rate range across baseline pipelines & 98.03\%--98.36\% & Stable high-repeatability regime \\
+Cross-solver discrepancy & Nominal vs stress utilization discrepancy means & 0.591 vs 0.816 & Stress remains bounded but higher \\
 \hline
 \end{tabular}
+}
 \end{table}
 
 \subsection{Cross-Solver Shadow-Mode Diagnostics}
@@ -472,10 +474,10 @@ This section summarizes implementation details needed for reproduction and exten
 \begin{itemize}
 \item \textbf{Seeds and repetitions.} Five seeds were used per experiment family, with baseline-stratified aggregation and confidence intervals computed as $1.96\times\mathrm{SE}$ from seed-baseline samples.
 \item \textbf{Sweep design.} Security-runtime sweeps included trust-region radius, uncertainty scale, and counterexample modes. Calibration sweeps included target risk levels, rolling-window length, and update cadence. Fairness sweeps covered policy parameters $(\alpha,\beta)$ and weighting schemes. Cross-solver sweeps covered solver pairs, harmonization profiles, and stress cases.
-\item \textbf{Compute budget.} Runs were executed under a single Apple Silicon APU budget with explicit concurrency bounds, and all generated artifacts were recorded with deterministic file outputs.
-\item \textbf{Claim-evidence traceability.} A revision artifact at \url{experiments/rdoe_hybrid_validation/claim_evidence_matrix.csv} maps each primary claim to theorem IDs or quantitative evidence entries and source files.
+\item \textbf{Compute budget.} Runs were executed on a single workstation with explicit concurrency bounds, and all generated artifacts were recorded with deterministic outputs.
+\item \textbf{Claim-evidence traceability.} An internal claim-to-evidence matrix maps each primary claim to theorem IDs or quantitative evidence entries and source materials.
 \item \textbf{Approximations and fallback.} Linearization and residual bounds are local approximations; uncertified candidates are always escalated to robust non-convex verification, ensuring conservative behavior under uncertainty.
-\item \textbf{Uncertainty reporting.} All major figures and CSV summaries include variability terms or confidence intervals, and acceptance checks are evaluated on aggregate metrics rather than single-run outcomes.
+\item \textbf{Uncertainty reporting.} All major figures and exported summaries include variability terms or confidence intervals, and acceptance checks are evaluated on aggregate metrics rather than single-run outcomes.
 \end{itemize}
 
 These details are included so that downstream revision and review phases can reproduce both theorem-linked diagnostics and empirical claim checks without ambiguity.
