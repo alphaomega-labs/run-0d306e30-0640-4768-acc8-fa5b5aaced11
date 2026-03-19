@@ -1,0 +1,266 @@
+\begin{thebibliography}{34}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Bernstein et~al.(2016)Bernstein, Dall'Anese, and Reyes-Chamorro]{KA25}
+A.~Bernstein, E.~Dall'Anese, and L.~Reyes-Chamorro.
+\newblock Optimal reactive power dispatch for voltage regulation in unbalanced
+  distribution systems.
+\newblock \emph{IEEE Transactions on Power Systems}, 2016.
+\newblock \doi{10.1109/TPWRS.2015.2451519}.
+\newblock URL \url{https://doi.org/10.1109/TPWRS.2015.2451519}.
+
+\bibitem[Cao et~al.(2024)Cao, Li, and Guo]{KA21}
+Y.~Cao, W.~Li, and Q.~Guo.
+\newblock Hierarchical optimal power flow algorithm in three-phase unbalanced
+  distribution networks based on improved gradient method.
+\newblock \emph{IEEE Transactions on Control of Network Systems}, 2024.
+\newblock \doi{10.1109/TCNS.2024.3425633}.
+\newblock URL \url{https://doi.org/10.1109/TCNS.2024.3425633}.
+
+\bibitem[Contributors(2026)]{KA40}
+DSS-Extensions Contributors.
+\newblock Opendss repository.
+\newblock GitHub, 2026.
+\newblock URL \url{https://github.com/dss-extensions/OpenDSSDirect.py}.
+
+\bibitem[Developers(2026)]{KA39}
+MATPOWER Developers.
+\newblock Matpower repository.
+\newblock GitHub, 2026.
+\newblock URL \url{https://github.com/MATPOWER/matpower}.
+
+\bibitem[Dinu et~al.(2024{\natexlab{a}})Dinu, Liu, and O'Connell]{KA05}
+M.~B. Dinu, Y.~Liu, and A.~M. O'Connell.
+\newblock Dynamic operating envelopes in unbalanced distribution systems:
+  Comparison of power flow models and solution methods.
+\newblock \emph{Sustainable Energy, Grids and Networks}, 2024{\natexlab{a}}.
+\newblock \doi{10.1016/j.segan.2024.101339}.
+\newblock URL \url{https://doi.org/10.1016/j.segan.2024.101339}.
+
+\bibitem[Dinu et~al.(2024{\natexlab{b}})Dinu, Hou, and Tjernberg]{KA01}
+Marius-Constantin Dinu, Yunhe Hou, and Lina~Bertling Tjernberg.
+\newblock Computation of robust dynamic operating envelopes based on non-convex
+  opf for unbalanced distribution networks.
+\newblock arXiv, 2024{\natexlab{b}}.
+\newblock URL \url{https://arxiv.org/abs/2404.03355v2}.
+
+\bibitem[e2nIEE \& simbench Contributors(2026)e2nIEE and simbench
+  Contributors]{KA41}
+e2nIEE and simbench Contributors.
+\newblock Simbench repository and dataset framework.
+\newblock GitHub, 2026.
+\newblock URL \url{https://github.com/e2nIEE/simbench}.
+
+\bibitem[Farivar \& Low(2013{\natexlab{a}})Farivar and Low]{KA26}
+M.~Farivar and S.~H. Low.
+\newblock Branch flow model: Relaxations and convexification-part i.
+\newblock \emph{IEEE Transactions on Power Systems}, 2013{\natexlab{a}}.
+\newblock \doi{10.1109/TPWRS.2013.2255317}.
+\newblock URL \url{https://doi.org/10.1109/TPWRS.2013.2255317}.
+
+\bibitem[Farivar \& Low(2013{\natexlab{b}})Farivar and Low]{KA27}
+M.~Farivar and S.~H. Low.
+\newblock Branch flow model: Relaxations and convexification-part ii.
+\newblock \emph{IEEE Transactions on Power Systems}, 2013{\natexlab{b}}.
+\newblock \doi{10.1109/TPWRS.2013.2255318}.
+\newblock URL \url{https://doi.org/10.1109/TPWRS.2013.2255318}.
+
+\bibitem[Frank et~al.(2012)Frank, Steponavice, and Rebennack]{KA34}
+S.~Frank, I.~Steponavice, and S.~Rebennack.
+\newblock Optimal power flow: A bibliographic survey i.
+\newblock \emph{International Transactions on Electrical Energy Systems}, 2012.
+\newblock \doi{10.1002/etep.1620}.
+\newblock URL \url{https://doi.org/10.1002/etep.1620}.
+
+\bibitem[Gan et~al.(2015{\natexlab{a}})Gan, Li, and Low]{KA29}
+L.~Gan, N.~Li, and S.~H. Low.
+\newblock Equivalent relaxations of optimal power flow.
+\newblock \emph{IEEE Transactions on Automatic Control}, 2015{\natexlab{a}}.
+\newblock \doi{10.1109/TAC.2014.2357112}.
+\newblock URL \url{https://doi.org/10.1109/TAC.2014.2357112}.
+
+\bibitem[Gan et~al.(2015{\natexlab{b}})Gan, Li, Topcu, and Low]{KA28}
+L.~Gan, N.~Li, U.~Topcu, and S.~H. Low.
+\newblock Exact convex relaxation of optimal power flow in radial networks.
+\newblock \emph{IEEE Transactions on Automatic Control}, 2015{\natexlab{b}}.
+\newblock \doi{10.1109/TAC.2014.2332712}.
+\newblock URL \url{https://doi.org/10.1109/TAC.2014.2332712}.
+
+\bibitem[Huang et~al.(2023)Huang, Liu, and Palomar]{KA16}
+M.~Huang, Y.~Liu, and D.~P. Palomar.
+\newblock Operating-envelopes-aware decentralized welfare maximization.
+\newblock \emph{Allerton Conference on Communication, Control, and Computing},
+  2023.
+\newblock \doi{10.1109/Allerton58177.2023.10313459}.
+\newblock URL \url{https://doi.org/10.1109/Allerton58177.2023.10313459}.
+
+\bibitem[Jalali et~al.(2021{\natexlab{a}})Jalali, Li, and Low]{KA19}
+S.~Jalali, N.~Li, and S.~H. Low.
+\newblock Network-level optimization for unbalanced power distribution system:
+  Approximation and relaxation.
+\newblock \emph{IEEE Transactions on Power Systems}, 2021{\natexlab{a}}.
+\newblock \doi{10.1109/TPWRS.2021.3066146}.
+\newblock URL \url{https://doi.org/10.1109/TPWRS.2021.3066146}.
+
+\bibitem[Jalali et~al.(2021{\natexlab{b}})Jalali, Li, and Low]{KA31}
+S.~Jalali, N.~Li, and S.~H. Low.
+\newblock Exactness of opf relaxation in three-phase radial networks under
+  delta connections.
+\newblock \emph{IEEE Transactions on Smart Grid}, 2021{\natexlab{b}}.
+\newblock \doi{10.1109/TSG.2021.3066530}.
+\newblock URL \url{https://doi.org/10.1109/TSG.2021.3066530}.
+
+\bibitem[Jalali et~al.(2022)Jalali, Dall'Anese, and Low]{KA20}
+S.~Jalali, E.~Dall'Anese, and S.~H. Low.
+\newblock Online voltage control for unbalanced distribution networks using
+  projected newton method.
+\newblock \emph{IEEE Transactions on Power Systems}, 2022.
+\newblock \doi{10.1109/TPWRS.2022.3144246}.
+\newblock URL \url{https://doi.org/10.1109/TPWRS.2022.3144246}.
+
+\bibitem[LANL-ANSI \& Contributors(2026)LANL-ANSI and Contributors]{KA38}
+LANL-ANSI and PowerModelsDistribution Contributors.
+\newblock Powermodelsdistribution.jl repository.
+\newblock GitHub, 2026.
+\newblock URL \url{https://github.com/lanl-ansi/PowerModelsDistribution.jl}.
+
+\bibitem[Lavaei \& Low(2012)Lavaei and Low]{KA30}
+J.~Lavaei and S.~H. Low.
+\newblock Zero duality gap in optimal power flow problem.
+\newblock \emph{IEEE Transactions on Power Systems}, 2012.
+\newblock \doi{10.1109/TPWRS.2011.2160974}.
+\newblock URL \url{https://doi.org/10.1109/TPWRS.2011.2160974}.
+
+\bibitem[Li et~al.(2018)Li, Chen, and Low]{KA18}
+N.~Li, L.~Chen, and S.~H. Low.
+\newblock Exact optimal power dispatch in unbalanced distribution systems with
+  high pv penetration.
+\newblock \emph{IEEE Transactions on Power Systems}, 2018.
+\newblock \doi{10.1109/TPWRS.2018.2869195}.
+\newblock URL \url{https://doi.org/10.1109/TPWRS.2018.2869195}.
+
+\bibitem[Liu et~al.(2023{\natexlab{a}})Liu, Braslavsky, and Verbic]{KA03}
+Y.~Liu, J.~H. Braslavsky, and G.~C. Verbic.
+\newblock Robust dynamic operating envelopes for der integration in unbalanced
+  distribution networks.
+\newblock \emph{IEEE Transactions on Power Systems}, 2023{\natexlab{a}}.
+\newblock \doi{10.1109/TPWRS.2023.3308104}.
+\newblock URL \url{https://doi.org/10.1109/TPWRS.2023.3308104}.
+
+\bibitem[Liu et~al.(2023{\natexlab{b}})Liu, Hill, and Braslavsky]{KA08}
+Y.~Liu, D.~J. Hill, and J.~H. Braslavsky.
+\newblock Allocation dynamic operating envelopes to ders in distribution
+  networks considering technical and equitable criteria.
+\newblock \emph{IEEE Transactions on Sustainable Energy}, 2023{\natexlab{b}}.
+\newblock \doi{10.1109/TSTE.2023.3275082}.
+\newblock URL \url{https://doi.org/10.1109/TSTE.2023.3275082}.
+
+\bibitem[Liu et~al.(2023{\natexlab{c}})Liu, Verbic, and Braslavsky]{KA15}
+Y.~Liu, G.~C. Verbic, and J.~H. Braslavsky.
+\newblock Time-varying operating regions of end-users and feeders in
+  low-voltage distribution networks.
+\newblock \emph{IEEE Transactions on Power Systems}, 2023{\natexlab{c}}.
+\newblock \doi{10.1109/TPWRS.2023.3302421}.
+\newblock URL \url{https://doi.org/10.1109/TPWRS.2023.3302421}.
+
+\bibitem[Liu et~al.(2024{\natexlab{a}})Liu, Dinu, and O'Connell]{KA04}
+Y.~Liu, M.~B. Dinu, and A.~M. O'Connell.
+\newblock Day-ahead dynamic operating envelopes in low-voltage distribution
+  networks with rooftop pvs: A data-driven stochastic utopf method.
+\newblock \emph{Sustainable Energy, Grids and Networks}, 2024{\natexlab{a}}.
+\newblock \doi{10.1016/j.segan.2024.101528}.
+\newblock URL \url{https://doi.org/10.1016/j.segan.2024.101528}.
+
+\bibitem[Liu et~al.(2024{\natexlab{b}})Liu, Dinu, and O'Connell]{KA17}
+Y.~Liu, M.~B. Dinu, and A.~M. O'Connell.
+\newblock A bargaining-based dynamic operating envelopes allocation method in
+  distribution networks.
+\newblock \emph{IEEE PES General Meeting}, 2024{\natexlab{b}}.
+\newblock \doi{10.1109/PESGM51994.2024.10688561}.
+\newblock URL \url{https://doi.org/10.1109/PESGM51994.2024.10688561}.
+
+\bibitem[Liu et~al.(2024{\natexlab{c}})Liu, Nazaripouya, and Zhang]{KA02}
+Y.~Liu, A.~Nazaripouya, and L.~Zhang.
+\newblock Linear opf-based method for computing robust dynamic operating
+  envelopes for distribution networks.
+\newblock \emph{Journal of Modern Power Systems and Clean Energy},
+  2024{\natexlab{c}}.
+\newblock \doi{10.35833/MPCE.2023.000653}.
+\newblock URL \url{https://doi.org/10.35833/MPCE.2023.000653}.
+
+\bibitem[Liu et~al.(2025{\natexlab{a}})Liu, Dinu, and O'Connell]{KA06}
+Y.~Liu, M.~B. Dinu, and A.~M. O'Connell.
+\newblock Data-driven dynamic operating envelope in lv distribution networks
+  with smart meter data.
+\newblock \emph{Applied Energy}, 2025{\natexlab{a}}.
+\newblock \doi{10.1016/j.apenergy.2025.125469}.
+\newblock URL \url{https://doi.org/10.1016/j.apenergy.2025.125469}.
+
+\bibitem[Liu et~al.(2025{\natexlab{b}})Liu, Dinu, and O'Connell]{KA14}
+Y.~Liu, M.~B. Dinu, and A.~M. O'Connell.
+\newblock Development and validation of dynamic operating envelope enabled
+  demand response in distribution networks.
+\newblock \emph{Applied Energy}, 2025{\natexlab{b}}.
+\newblock \doi{10.1016/j.apenergy.2024.125150}.
+\newblock URL \url{https://doi.org/10.1016/j.apenergy.2024.125150}.
+
+\bibitem[Liu et~al.(2025{\natexlab{c}})Liu, Dinu, and O'Connell]{KA35}
+Y.~Liu, M.~B. Dinu, and A.~M. O'Connell.
+\newblock Dynamic operating envelope in the future distribution grid: A review.
+\newblock \emph{Modelling}, 2025{\natexlab{c}}.
+\newblock \doi{10.3390/modelling6020029}.
+\newblock URL \url{https://doi.org/10.3390/modelling6020029}.
+
+\bibitem[Liu et~al.(2025{\natexlab{d}})Liu, Liang, and Ledwich]{KA07}
+Y.~Liu, X.~Liang, and G.~Ledwich.
+\newblock Interpretable dynamic operating envelopes in distribution systems via
+  deep learning.
+\newblock \emph{Energies}, 2025{\natexlab{d}}.
+\newblock \doi{10.3390/en18102529}.
+\newblock URL \url{https://doi.org/10.3390/en18102529}.
+
+\bibitem[Liu et~al.(2025{\natexlab{e}})Liu, O'Connell, and Verbic]{KA10}
+Y.~Liu, A.~M. O'Connell, and G.~C. Verbic.
+\newblock Bargaining-based dynamic operating envelopes allocation method in
+  distribution networks.
+\newblock \emph{IEEE Transactions on Smart Grid}, 2025{\natexlab{e}}.
+\newblock \doi{10.1109/TSG.2025.3566419}.
+\newblock URL \url{https://doi.org/10.1109/TSG.2025.3566419}.
+
+\bibitem[of~Kassel et~al.(2026)of~Kassel, IEE, and pandapower
+  Contributors]{KA36}
+University of~Kassel, Fraunhofer IEE, and pandapower Contributors.
+\newblock pandapower github repository.
+\newblock GitHub, 2026.
+\newblock URL \url{https://github.com/e2nIEE/pandapower}.
+
+\bibitem[Thurner et~al.(2018)Thurner, Scheidler, Schafer, Menke, Dollichon,
+  Meier, Meinecke, and Braun]{KA32}
+L.~Thurner, A.~Scheidler, F.~Schafer, J.~Menke, J.~Dollichon, F.~Meier,
+  S.~Meinecke, and M.~Braun.
+\newblock pandapower - an open-source python tool for convenient modeling,
+  analysis, and optimization of electric power systems.
+\newblock \emph{IEEE Transactions on Power Systems}, 2018.
+\newblock \doi{10.1109/TPWRS.2018.2829021}.
+\newblock URL \url{https://doi.org/10.1109/TPWRS.2018.2829021}.
+
+\bibitem[Wang et~al.(2024)Wang, Cao, and Pan]{KA22}
+L.~Wang, Y.~Cao, and M.~Pan.
+\newblock Taylor-expansion-based robust power flow for three-phase unbalanced
+  distribution networks.
+\newblock \emph{IEEE PES General Meeting}, 2024.
+\newblock \doi{10.1109/PESGM51994.2024.10689162}.
+\newblock URL \url{https://doi.org/10.1109/PESGM51994.2024.10689162}.
+
+\bibitem[Zimmerman et~al.(2020)Zimmerman, Murillo-Sanchez, and Thomas]{KA33}
+R.~D. Zimmerman, C.~E. Murillo-Sanchez, and R.~J. Thomas.
+\newblock Matpower 7.0: New features and legacy compatibility.
+\newblock \emph{IEEE Transactions on Power Systems}, 2020.
+\newblock \doi{10.1109/TPWRS.2020.2997060}.
+\newblock URL \url{https://doi.org/10.1109/TPWRS.2020.2997060}.
+
+\end{thebibliography}

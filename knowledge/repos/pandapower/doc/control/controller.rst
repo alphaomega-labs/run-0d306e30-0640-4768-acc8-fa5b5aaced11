@@ -1,0 +1,148 @@
+.. _controller:
+
+###################################################
+Predefined Controllers
+###################################################
+
+
+Basic Controller
+==================
+
+The basic controller is the base controller class that should be subclassed when implementing custom controllers.
+
+.. autoclass:: pandapower.control.basic_controller.Controller
+    :members:
+    :inherited-members:
+    :show-inheritance:
+
+ConstControl
+==============
+.. _ConstControl:
+
+This controller is made for the use with the time series module to read data from a DataSource and write it to the net.
+The controller can write the values either to a column of an element table (e.g. net.load.p_mw) or an attribute of another object that is
+stored in an element table (e.g. another controller, net.controller.object). To change a controller attribute, the variable must be defined
+in the format "object.attribute" (e.g. "object.set_vm_pu").
+Note that ConstControl writes values to net in time_step, in order to set the values of the time step before the initial power flow.
+If ConstControl is used without a data_source, it will reset the controlled values to the initial values, preserving the initial net state.
+
+.. autoclass:: pandapower.control.controller.const_control.ConstControl
+    :members:
+
+
+TrafoController
+===============
+
+The following controllers to control tap changers are predefined within the pandapower control module.
+
+**********************
+Continuous Tap Control
+**********************
+.. autoclass:: pandapower.control.controller.trafo.ContinuousTapControl.ContinuousTapControl
+    :members:
+
+
+-------------
+
+**********************
+Discrete Tap Control
+**********************
+
+.. autoclass:: pandapower.control.controller.trafo.DiscreteTapControl.DiscreteTapControl
+    :members:
+
+
+DER Controller
+===============
+.. autoclass:: pandapower.control.controller.DERController.der_control.DERController
+    :members:
+
+
+CharacteristicControl
+=====================
+
+The following controllers that use characteristics are predefined within the pandapower control module.
+
+**********************
+CharacteristicControl
+**********************
+.. autoclass:: pandapower.control.controller.characteristic_control.CharacteristicControl
+    :members:
+
+-------------
+
+**********************
+VmSetTapControl
+**********************
+
+.. autoclass:: pandapower.control.controller.trafo.VmSetTapControl.VmSetTapControl
+    :members:
+
+-------------
+
+**********************
+TapDependentImpedance
+**********************
+
+.. autoclass:: pandapower.control.controller.trafo.TapDependentImpedance.TapDependentImpedance
+    :members:
+
+
+Characteristic
+==============
+
+The following classes enable the definition of characteristics for the controllers.
+
+***************
+Characteristic
+***************
+
+.. autoclass:: pandapower.control.util.characteristic.Characteristic
+    :members:
+
+-------------
+
+********************
+SplineCharacteristic
+********************
+
+.. autoclass:: pandapower.control.util.characteristic.SplineCharacteristic
+    :members:
+
+
+Station Controller
+==================
+The following controllers are used for the representation of station controllers as used in PowerFactory. The Vdroop is
+a new controller class used for the local droop voltage control.
+
+**********************
+Binary Search Control
+**********************
+
+.. autoclass:: pandapower.control.controller.station_control.BinarySearchControl
+    :members:
+
+***************
+Droop Control
+***************
+
+.. autoclass:: pandapower.control.controller.station_control.DroopControl
+    :members:
+
+**********************
+Local VDroop Control
+**********************
+
+.. autoclass:: pandapower.control.controller.station_control.VDroopControl_local
+    :members:
+
+Shunt Controller
+==================
+
+**********************
+Discrete Shunt Control
+**********************
+
+.. autoclass:: pandapower.control.controller.shunt_control.DiscreteShuntController
+    :members:
+
